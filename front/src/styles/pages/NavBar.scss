@@ -1,0 +1,36 @@
+
+$Primary: #ce4257;
+$Primary-light:#e2d6d7;
+$Secondary: #ff7f51;
+$Third: #720026;
+
+*{margin: 0px;
+
+.nav-container{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: $Third;
+    height: 8rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    .logo{
+        height: 8rem;
+        display: flex;
+        justify-content: flex-start;
+        align-self: flex-start;
+        padding-left: 3%;
+    }
+    h5{
+        color: black;
+        font-size: 2rem;
+        margin-right: 10%;
+    }
+    img{
+        height: 2rem;
+        width: 2rem;
+    }
+}
+}
