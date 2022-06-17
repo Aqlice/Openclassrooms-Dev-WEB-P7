@@ -36,3 +36,15 @@ exports.deletePost = (req, res, next) => {
             return res.status(200).json(result)
     })
 }
+
+exports.getComments = (req, res, next) => {
+    const sql = `SELECT * FROM comments WHERE post_id = ${req.params.id}`
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            throw err
+        }
+        else
+            return res.status(200).json(result)
+    })
+}
