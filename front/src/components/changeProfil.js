@@ -18,6 +18,7 @@ function ChangeProfil() {
     const token = JSON.parse(localStorage.token)
 
     const handleProfile = (e) => {
+        console.log(imageProfileUpload)
         axios({
             method: "PUT",
             url: `${process.env.REACT_APP_API_URL}api/auth/${id} `,
@@ -26,7 +27,7 @@ function ChangeProfil() {
                 mail: mail,
                 fname: fname,
                 name: name,
-                imageProfile: imageProfileUpload,
+                pic: imageProfileUpload,
             },
             headers: {
                 authorization: `Bearer ${token}`
@@ -66,10 +67,8 @@ function ChangeProfil() {
             <div className='mail-error'></div>
             <br />
 
+            <input type="file" name="profile-picture" id='profile-picture' onChange={(e) => setImageProfileUpload(e.target.files[0])} value={imageProfileUpload}></input>
             <input type="submit" value="modifier mon profil"></input>
-
-
-
         </form>
     )
 

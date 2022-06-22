@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom"
 import axios from 'axios'
 import avatar from "../image/avatar.png"
-import Poster from './Poster'
+import Comments from "./Comments"
+import getAllPosts from "../pages/Home"
 
 function Posts({ key, fname, message, postUserId, postId, date }) {
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
     const [posts, setPosts] = useState([])
-    const [comments, setComments] = useState('')
+    const [comments, setComments] = useState([])
+    const [newComment, setNewComment] = useState('')
 
     const deletePost = () => {
         axios({
@@ -22,6 +24,7 @@ function Posts({ key, fname, message, postUserId, postId, date }) {
                 setPosts(res.data)
                 if (res.data.error)
                     console.log(res.data.error)
+                getAllPosts()
             })
             .catch((err) => {
                 console.log(err)
@@ -33,14 +36,17 @@ function Posts({ key, fname, message, postUserId, postId, date }) {
         axios({
             method: "GET",
             url: `${process.env.REACT_APP_API_URL}api/posts/${postId} `,
-            /*headers: {
+            headers: {
                 authorization: `Bearer ${token}`
-            },*/
+            },
         })
             .then((res) => {
-                setComments(res.data)
-                console.log(comments)
-                console.log(comments[0].comment)
+                if (res.data) {
+                    console.log(res.data)
+                    setComments(res.data)
+                }
+                else
+                    setComments('')
                 if (res.data.error)
                     console.log(res.data.error)
             })
@@ -50,15 +56,54 @@ function Posts({ key, fname, message, postUserId, postId, date }) {
             )
     }
 
+    const createComment = (e) => {
+        axios({
+            method: "POST",
+            url: `${process.env.REACT_APP_API_URL}api/posts/comments `,
+            data: {
+                user_id: userId,
+                post_id: postId,
+                comment: newComment
+            },
+            headers: {
+                authorization: `Bearer ${token}`
+            },
+        }).then((res) => {
+            console.log(res);
+            setNewComment(res.data.comment)
+            if (res.data.error) {
+                console.log("la", res.data.errors)
+
+            }
+            getComments()
+        })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
     return (
         <>
             <div className="post-container">
                 <p>{message}</p>
                 <p>{date}</p>
                 <li onClick={getComments} id="getComments">afficher les commentaires</li>
-                {comments ? (
-                    <p>{comments[0].comment}</p>
-                ) : ('')}
+                <div className="comment-container">
+                    {comments.map(comments =>
+                    (
+                        <Comments
+                            key={comments.id}
+                            comment={comments.comment}
+                            userId={comments.user_id}
+                            postId={comments.post_id}
+                            date={comments.creation_time} />
+                    )
+                    )}
+                    <form>
+                        <input type="text" name="comment" id='comment' placeholder="commentaire" onChange={(e) => setNewComment
+                            (e.target.value)} value={newComment}></input>
+                        <li onClick={createComment} id="create-comment" className="active-btn">ajouter un commentaire</li>
+                    </form>
+                </div>
                 {postUserId === userId ? (
                     <li onClick={deletePost} id="delete-post" className="active-btn">supprimer</li>)
                     : ("")

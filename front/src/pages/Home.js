@@ -1,8 +1,8 @@
-import React, { useEffect, useState }from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Poster from '../components/Poster';
 import Posts from '../components/Posts'
-
+import Comments from '../components/Comments'
 
 const Home = () => {
 
@@ -36,9 +36,6 @@ const Home = () => {
         }).then((res) => {
             setPosts(res.data)
             setTotalItems(res.data.length)
-            console.log(totalItems)
-            console.log(posts.post_user_id, userId)
-            console.log(res)
             if (res.data.error) {
                 console.log("ici222", res.data.errors)
 
@@ -54,7 +51,7 @@ const Home = () => {
             <section>
                 <div home-container>
                     Hello depuis la page Home
-                    <Poster />
+                    <Poster getAllPosts={getAllPosts}/>
                 </div>
                 <div className='post-container'>
                     {posts.map(posts =>

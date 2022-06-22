@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState, } from 'react';
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import ChangeProfil from '../components/changeProfil';
+import avatar from "../image/avatar.png"
 
 
 const Account = () =>{
@@ -59,7 +60,7 @@ const Account = () =>{
 		<section>
             <div className='account-container'>
 				<div className='image-container'>
-                	<p>image avatar</p>
+                	<img src={avatar}></img>
 				</div>
             
                 {userId === id ? (

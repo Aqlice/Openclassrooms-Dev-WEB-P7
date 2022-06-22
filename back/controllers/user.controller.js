@@ -82,11 +82,12 @@ exports.userInfo = (req, res, next) => {
 }
 
 exports.modifyUser = (req, res, next) => {
+    console.log(req.body.pic)
     const updated = {
         name: req.body.name,
         fname: req.body.fname,
         mail: req.body.mail,
-        pic: req.body.pic
+        pic: `${req.protocol}://${req.get('host')}/images/profils/${req.body.pic}`
     }
     const sql = `UPDATE user SET ? WHERE UID=?`
     db.query(sql, [updated, req.params.id], async (err, result) =>{

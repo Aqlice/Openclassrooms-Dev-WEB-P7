@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import avatar from "../image/avatar.png"
 
-function Poster(){
+function Poster({getAllPosts}){
 
     useEffect(() => {
         getUser();
@@ -23,9 +23,9 @@ function Poster(){
             method: "GET",
             url: `${process.env.REACT_APP_API_URL}api/auth/${userId} `,
             
-        //    headers:{
-        //        authorization:`Bearer ${token}`
-        //    }
+            headers:{
+                authorization:`Bearer ${token}`
+            }
         }).then((res) => {
             console.log(res);
 			setname(res.data.name);
@@ -52,16 +52,17 @@ function Poster(){
                 message: message
             },
             
-            /*headers:{
+            headers:{
                 authorization:`Bearer ${token}`
-            }*/
+            }
         }).then((res) => {
             console.log(res);
 			setMessage(res.data.message)
             if (res.data.error) {
                 console.log("la",res.data.errors)
                
-            } 
+            }
+            getAllPosts()
           })
           .catch((err) => {
             console.log(err);
