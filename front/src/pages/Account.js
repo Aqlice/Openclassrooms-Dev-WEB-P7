@@ -9,7 +9,6 @@ const Account = () =>{
     useEffect(() => {
         getUser()
     })
-    console.log(localStorage)
 	const [name, setname]= useState('')
 	const [fname, setfname]= useState('')
 	const[mail, setmail] = useState('')

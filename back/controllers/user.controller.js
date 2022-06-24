@@ -74,23 +74,24 @@ exports.userInfo = (req, res, next) => {
             throw err
         if (result.length === 0)
             return res.status(400).json({ error: "Utilisateur non trouvé" })
-        else
-        {
+        else {
             res.status(200).json(result[0])
         }
     })
 }
 
 exports.modifyUser = (req, res, next) => {
-    console.log(req.body.pic)
+
+    console.log("req body image", req.body.image)
+    console.log("req file", req.file)
     const updated = {
         name: req.body.name,
         fname: req.body.fname,
         mail: req.body.mail,
-        pic: `${req.protocol}://${req.get('host')}/images/profils/${req.body.pic}`
+        pic: `${req.protocol}://${req.get('host')}/images/profils/${req.file.filename}`
     }
     const sql = `UPDATE user SET ? WHERE UID=?`
-    db.query(sql, [updated, req.params.id], async (err, result) =>{
+    db.query(sql, [updated, req.params.id], async (err, result) => {
         if (err)
             throw err
         else
