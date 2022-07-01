@@ -4,8 +4,9 @@ import axios from 'axios'
 import avatar from "../image/avatar.png"
 import Comments from "./Comments"
 import getAllPosts from "../pages/Home"
+import heart from "../image/icons/heart.svg"
 
-function Posts({ key, fname, message, postUserId, postId, date }) {
+function Posts({ key, fname, message, postUserId, postId, date, like }) {
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
     const [posts, setPosts] = useState([])
@@ -81,11 +82,31 @@ function Posts({ key, fname, message, postUserId, postId, date }) {
                 console.log(err);
             });
     }
+
+    const addLike = () => {
+        console.log("la")
+        axios({
+            method: "POST",
+            url: `${process.env.REACT_APP_API_URL}api/posts/like `,
+            data: {
+                user_id: userId,
+                post_id: postId,
+            },
+            headers: {
+                authorization: `Bearer ${token}`
+            },
+        })
+        getAllPosts()
+    }
     return (
         <>
             <div className="post-container">
                 <p>{message}</p>
                 <p>{date}</p>
+                <li onClick={addLike}>
+                    <img src={heart} id="heart" />
+                </li>
+                <p> {like}</p>
                 <li onClick={getComments} id="getComments">afficher les commentaires</li>
                 <div className="comment-container">
                     {comments.map(comments =>

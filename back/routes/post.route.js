@@ -9,5 +9,6 @@ router.post('/', auth, postCtrl.createPost)
 router.delete('/:id', auth, postCtrl.deletePost)
 router.get('/:id', auth, postCtrl.getComments)
 router.post('/comments', auth, postCtrl.createComment)
+router.post('/like', auth, postCtrl.addLike)
 
 module.exports = router

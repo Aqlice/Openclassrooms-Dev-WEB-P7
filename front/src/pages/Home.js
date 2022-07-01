@@ -61,7 +61,8 @@ const Home = () => {
                             message={posts.message}
                             postUserId={posts.post_user_id}
                             postId={posts.post_id}
-                            date={posts.creation_time} />
+                            date={posts.creation_time} 
+                            like={posts.total_like}/>
                     )
                     )}
                 </div>

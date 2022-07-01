@@ -23,4 +23,9 @@
   background-color: #ffd7d7;
   padding: 1rem;
 }
+
+.post-container #heart {
+  height: 10px;
+  width: 10px;
+}
 /*# sourceMappingURL=post.css.map */

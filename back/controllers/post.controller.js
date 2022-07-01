@@ -2,7 +2,7 @@ const dbc = require("../db")
 const db = dbc.getDB()
 
 exports.getAllPost = (req, res, next) => {
-    const sql = `SELECT post.id AS post_id, post.pic AS post_pic, post.message, post.creation_time, post.user_id as post_user_id, user.fname as post_user_name, likes.user_id as liked FROM post JOIN user ON post.user_id = user.UID JOIN likes ON likes.post_id = post.id`
+    const sql = `SELECT post.id AS post_id, post.pic AS post_pic, post.message, post.creation_time, post.user_id as post_user_id, user.fname as post_user_name, COUNT(likes.post_id) AS total_like FROM post JOIN user ON post.user_id = user.UID LEFT JOIN likes ON post.id = likes.post_id GROUP BY post.id`
     db.query(sql, async (err, result) => {
         if (err)
             throw err
@@ -59,6 +59,21 @@ exports.createComment = (req, res, next) => {
         post_id: req.body.post_id
     }
     db.query(sql, newCom, (err, result) => {
+        if (err)
+            throw err
+        else
+            return res.status(200).json(result)
+    })
+}
+
+exports.addLike = (req, res, next) => {
+    const sql = `INSERT INTO likes SET ?`
+    const newLike = {
+        user_id: req.body.user_id,
+        post_id: req.body.post_id
+    }
+    console.log("dede")
+    db.query(sql, newLike, (err, result) => {
         if (err)
             throw err
         else
