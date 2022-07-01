@@ -2,12 +2,14 @@ const dbc = require("../db")
 const db = dbc.getDB()
 
 exports.getAllPost = (req, res, next) => {
-    const sql = `SELECT post.id AS post_id, post.pic AS post_pic, post.message, post.creation_time, post.user_id as post_user_id FROM post`
+    const sql = `SELECT post.id AS post_id, post.pic AS post_pic, post.message, post.creation_time, post.user_id as post_user_id, user.fname as post_user_name FROM post JOIN user ON post.user_id = user.UID`
     db.query(sql, async (err, result) => {
         if (err)
             throw err
-        else
+        else {
+            console.log(result)
             return res.status(200).json(result)
+        }
     })
 }
 

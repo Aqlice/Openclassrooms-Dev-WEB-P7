@@ -1,0 +1,30 @@
+.poster-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    background-color: red;
+    height: 250px;
+    border-radius: 20px;
+}
+
+#profileImage {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#post {
+    margin-bottom: 20px;
+}
+
+#create-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 2rem;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 5px gray;
+}

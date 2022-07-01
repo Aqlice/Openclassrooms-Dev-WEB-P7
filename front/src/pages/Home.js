@@ -50,7 +50,6 @@ const Home = () => {
         <main>
             <section>
                 <div home-container>
-                    Hello depuis la page Home
                     <Poster getAllPosts={getAllPosts}/>
                 </div>
                 <div className='post-container'>

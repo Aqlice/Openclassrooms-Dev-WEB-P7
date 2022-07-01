@@ -40,7 +40,7 @@ const Account = () =>{
 				setfname(res.data.fname);
 			if (res.data.mail)
 				setmail(res.data.mail);
-			setImageProfile(res.data.imageprofile)
+			setImageProfile(res.data.pic)
             
             if (res.data.error) {
                 console.log("ici",res.data.errors)
@@ -59,11 +59,11 @@ const Account = () =>{
 		<section>
             <div className='account-container'>
 				<div className='image-container'>
-                	<img src={avatar}></img>
+                	<img src={imageProfile} id ="image" alt="image"/>
 				</div>
             
                 {userId === id ? (
-					<div className='user-prentation'>
+					<div className='user-presentation'>
 					<p >nom: {name}</p>
 					<p> Prenom {fname}:</p>
 					<p>Contact : {mail}</p>
@@ -74,7 +74,7 @@ const Account = () =>{
 					
                  
                 ) : (
-                    <div className='user-prentation'>
+                    <div className='user-presentation' id="showProfil2">
 					<p> nom: {name}</p>
 					<p> Prenom: {fname}</p>
 					<p>Contact: {mail}</p>

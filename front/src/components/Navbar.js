@@ -2,15 +2,16 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import Logout from "./login/logout"
+import userIcon from "../image/icons/user.svg"
 
 function Navbar() {
     return (
         <nav>
             <div className='nav-container'>
                 <div className='logo'>
-                    <NavLink  to="/">
-                        <div className='logo'>
-                            <img src="./icon-left-font.png" alt='logo groupomania' />
+                    <NavLink  to="/home">
+                        <div className='logo' id="nav-logo">
+                            <img src="./logo/icon-left-font-monochrome-black.png" alt='logo groupomania' />
                         </div>
                     </NavLink>
                 </div>
@@ -20,8 +21,7 @@ function Navbar() {
                         <li></li>
                         <li className='welcome'>
                             <NavLink to={`/account/${ JSON.parse(localStorage.userId) }`}>
-                               
-                                <h5>bienvenue a toi</h5>
+                            <img src={userIcon}/>
                             </NavLink>
                         </li>
                         <li onClick={Logout}>

@@ -1,0 +1,18 @@
+$Primary : #fd2d01;
+$Secondary: #ffd7d7;
+$Third: #a5a6aa;
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
+    width: 80%;
+    border-radius: 20px;
+    .post-container {
+        margin: 2rem;
+        background-color: $Secondary;
+        padding : 1rem;
+    }
+}

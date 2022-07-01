@@ -68,7 +68,7 @@ exports.signin = (req, res, next) => {
 }
 
 exports.userInfo = (req, res, next) => {
-    const sql = `SELECT name, fname, mail FROM user WHERE UID=?`
+    const sql = `SELECT name, fname, mail, pic FROM user WHERE UID=?`
     db.query(sql, req.params.id, async (err, result) => {
         if (err)
             throw err

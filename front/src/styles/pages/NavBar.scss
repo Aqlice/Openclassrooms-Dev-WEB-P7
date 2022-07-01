@@ -1,8 +1,7 @@
 
-$Primary: #ce4257;
-$Primary-light:#e2d6d7;
-$Secondary: #ff7f51;
-$Third: #720026;
+$Primary : #fd2d01;
+$Secondary: #ffd7d7;
+$Third: #a5a6aa;
 
 *{margin: 0px;
 
@@ -12,15 +11,15 @@ $Third: #720026;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    background-color: $Third;
+    background-color: $Primary;
     height: 8rem;
     width: 100%;
     margin-bottom: 3rem;
     .logo{
         height: 8rem;
         display: flex;
-        justify-content: flex-start;
-        align-self: flex-start;
+        justify-content: center;
+        align-self: center;
         padding-left: 3%;
     }
     h5{
@@ -31,6 +30,9 @@ $Third: #720026;
     img{
         height: 2rem;
         width: 2rem;
+    }
+    .nav-logo {
+        background-color: blue;
     }
 }
 }

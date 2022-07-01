@@ -6,7 +6,7 @@ import avatar from "../image/avatar.png"
 function Comments({ key, comment, userId, postId, date }) {
 
     return (
-        <div>
+        <div class="comment-box">
             <p>{comment}</p>
         </div>
     )

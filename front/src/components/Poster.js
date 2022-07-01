@@ -12,6 +12,7 @@ function Poster({getAllPosts}){
     const [name, setname]= useState('');
     const [fname, setfname] = useState('');
     const [message, setMessage] = useState('')
+    const [imageProfile, setImageProfile] = useState()
 
     const userId = JSON.parse(localStorage.userId)
 	const token = JSON.parse(localStorage.token)
@@ -30,6 +31,7 @@ function Poster({getAllPosts}){
             console.log(res);
 			setname(res.data.name);
 			setfname(res.data.fname);
+            setImageProfile(res.data.pic)
 			
             
             if (res.data.error) {
@@ -77,8 +79,7 @@ function Poster({getAllPosts}){
         <div className='poster-container'>
 
             <div>
-                <img src={avatar} alt="avatar"></img>
-                username:{fname}
+                <img src={imageProfile} id="profileImage" alt="avatar"></img>
                 <form>
                 <input type="text" name="post" id='post' placeholder="Que souhaitez vous partager" onChange={(e) => setMessage
                 (e.target.value)} value={message}></input>
