@@ -37,7 +37,7 @@ const Home = () => {
             setPosts(res.data)
             setTotalItems(res.data.length)
             if (res.data.error) {
-                console.log("ici222", res.data.errors)
+                console.log(res.data.errors)
 
             }
         })

@@ -2,7 +2,7 @@ const dbc = require("../db")
 const db = dbc.getDB()
 
 exports.getAllPost = (req, res, next) => {
-    const sql = `SELECT post.id AS post_id, post.pic AS post_pic, post.message, post.creation_time, post.user_id as post_user_id, user.fname as post_user_name FROM post JOIN user ON post.user_id = user.UID`
+    const sql = `SELECT post.id AS post_id, post.pic AS post_pic, post.message, post.creation_time, post.user_id as post_user_id, user.fname as post_user_name, likes.user_id as liked FROM post JOIN user ON post.user_id = user.UID JOIN likes ON likes.post_id = post.id`
     db.query(sql, async (err, result) => {
         if (err)
             throw err

@@ -32,10 +32,10 @@ CREATE TABLE `comments` (
 -- Structure de la table `like_post`
 --
 
-CREATE TABLE `like` (
+CREATE TABLE `likes` (
   `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(36) NOT NULL,
-  `id` int(11) NOT NULL
+  `post_id` int(11) NOT NULL,
+  `user_id` varchar(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
