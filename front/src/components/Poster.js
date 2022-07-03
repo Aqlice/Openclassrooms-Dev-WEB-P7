@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import avatar from "../image/avatar.png"
 
-function Poster({getAllPosts}){
+function Poster({getAllComments}){
 
     useEffect(() => {
         getUser();
@@ -64,7 +64,6 @@ function Poster({getAllPosts}){
                 console.log("la",res.data.errors)
                
             }
-            getAllPosts()
           })
           .catch((err) => {
             console.log(err);

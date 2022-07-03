@@ -7,7 +7,7 @@ exports.getAllPost = (req, res, next) => {
         if (err)
             throw err
         else {
-            console.log(result)
+            //console.log(result)
             return res.status(200).json(result)
         }
     })
@@ -40,7 +40,7 @@ exports.deletePost = (req, res, next) => {
 }
 
 exports.getComments = (req, res, next) => {
-    const sql = `SELECT * FROM comments WHERE post_id = ${req.params.id}`
+    const sql = `SELECT *, user.fName FROM comments JOIN user on comments.user_id = user.UID WHERE post_id = ${req.params.id}`
     db.query(sql, (err, result) => {
         if (err) {
             console.log(err)
@@ -67,16 +67,31 @@ exports.createComment = (req, res, next) => {
 }
 
 exports.addLike = (req, res, next) => {
-    const sql = `INSERT INTO likes SET ?`
-    const newLike = {
-        user_id: req.body.user_id,
-        post_id: req.body.post_id
-    }
-    console.log("dede")
-    db.query(sql, newLike, (err, result) => {
+    let a = 0
+    const sql = ` SELECT * FROM likes WHERE user_id = '${req.body.user_id}' AND post_id = ${req.body.post_id}`
+    db.query(sql, async (err, result) => {
         if (err)
             throw err
-        else
-            return res.status(200).json(result)
+        else if (result.length === 0) {
+            const sql = `INSERT INTO likes SET ?`
+            const newLike = {
+                user_id: req.body.user_id,
+                post_id: req.body.post_id
+            }
+            db.query(sql, newLike, (err, result) => {
+                if (err)
+                    throw err
+                else
+                    return res.status(200).json(result)
+            })
+        }
+        else {
+            const sql = `DELETE FROM likes WHERE user_id = '${req.body.user_id}' AND post_id = ${req.body.post_id}`
+            db.query(sql, async (err, result) => {
+                if (err)
+                    throw err
+                res.status(200).json()
+            })
+        }
     })
 }

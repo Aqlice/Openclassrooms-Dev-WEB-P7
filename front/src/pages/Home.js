@@ -36,6 +36,7 @@ const Home = () => {
         }).then((res) => {
             setPosts(res.data)
             setTotalItems(res.data.length)
+            console.log("ca marche ou pas")
             if (res.data.error) {
                 console.log(res.data.errors)
 
@@ -62,7 +63,8 @@ const Home = () => {
                             postUserId={posts.post_user_id}
                             postId={posts.post_id}
                             date={posts.creation_time} 
-                            like={posts.total_like}/>
+                            like={posts.total_like}
+                            getAllPosts={getAllPosts}/>
                     )
                     )}
                 </div>

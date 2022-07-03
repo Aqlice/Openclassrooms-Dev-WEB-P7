@@ -6,12 +6,13 @@ import Comments from "./Comments"
 import getAllPosts from "../pages/Home"
 import heart from "../image/icons/heart.svg"
 
-function Posts({ key, fname, message, postUserId, postId, date, like }) {
+function Posts({ fname, message, postUserId, postId, date, like, getAllPosts }) {
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
     const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState('')
+    const [likes, setLikes] = useState(false)
 
     const deletePost = () => {
         axios({
@@ -84,7 +85,7 @@ function Posts({ key, fname, message, postUserId, postId, date, like }) {
     }
 
     const addLike = () => {
-        console.log("la")
+
         axios({
             method: "POST",
             url: `${process.env.REACT_APP_API_URL}api/posts/like `,
@@ -96,7 +97,12 @@ function Posts({ key, fname, message, postUserId, postId, date, like }) {
                 authorization: `Bearer ${token}`
             },
         })
-        getAllPosts()
+            .then(() =>
+                getAllPosts()
+            )
+        console.log("ici4")
+
+        console.log("ici5")
     }
     return (
         <>
@@ -108,7 +114,7 @@ function Posts({ key, fname, message, postUserId, postId, date, like }) {
                 </li>
                 <p> {like}</p>
                 <li onClick={getComments} id="getComments">afficher les commentaires</li>
-                <div className="comment-container">
+                <div className="comment-container" >
                     {comments.map(comments =>
                     (
                         <Comments
@@ -116,6 +122,7 @@ function Posts({ key, fname, message, postUserId, postId, date, like }) {
                             comment={comments.comment}
                             userId={comments.user_id}
                             postId={comments.post_id}
+                            fname={comments.fname}
                             date={comments.creation_time} />
                     )
                     )}
