@@ -122,8 +122,7 @@ function Posts({ fname, message, postUserId, postId, date, like, getAllPosts }) 
                             id={comments.id}
                             comment={comments.comment}
                             comUserId={comments.user_id}
-                            
-                            fname={comments.fname}
+                            fname={comments.fName}
                             date={comments.creation_time} 
                             getComments={getComments}/>
 
