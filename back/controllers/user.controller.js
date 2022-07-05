@@ -98,3 +98,14 @@ exports.modifyUser = (req, res, next) => {
             res.status(200).json(result)
     })
 }
+
+exports.deleteUser = (req, res, next) => {
+    console.log(req.params.id, req.auth)
+    const sql = `DELETE FROM user WHERE user.UID="${req.params.id}"`
+    db.query(sql, async (err, result) => {
+        if (err)
+            throw err
+        else
+            res.status(200).json(result)
+    })
+}

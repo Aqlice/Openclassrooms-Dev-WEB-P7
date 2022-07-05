@@ -39,14 +39,29 @@ exports.deletePost = (req, res, next) => {
     })
 }
 
-exports.getComments = (req, res, next) => {
-    const sql = `SELECT *, user.fName FROM comments JOIN user on comments.user_id = user.UID WHERE post_id = ${req.params.id}`
+exports.deleteCom = (req, res, next) => {
+    const sql = `DELETE FROM comments WHERE id = ${req.params.id}`
     db.query(sql, (err, result) => {
         if (err) {
             console.log(err)
             throw err
         }
         else
+            return res.status(200).json(result)
+    })
+}
+
+exports.getComments = (req, res, next) => {
+    const sql = `SELECT comments.id, comments.user_id, comments.post_id, comments.comment,comments.creation_date, user.fName FROM comments JOIN user on comments.user_id = user.UID WHERE post_id = ${req.params.id}`
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            throw err
+        }
+        else {
+            console.log("lali", result)
+            return res.status(200).json(result)
+        }
             return res.status(200).json(result)
     })
 }

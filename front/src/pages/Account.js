@@ -11,8 +11,9 @@ const Account = () =>{
     })
 	const [name, setname]= useState('')
 	const [fname, setfname]= useState('')
-	const[mail, setmail] = useState('')
+	const [mail, setmail] = useState('')
 	const [imageProfile, setImageProfile ]= useState('')
+	const [admin, setAdmin] = useState(0)
 	
 
 	const[profilModal, setProfilModal]= useState(false);
@@ -40,6 +41,7 @@ const Account = () =>{
 				setfname(res.data.fname);
 			if (res.data.mail)
 				setmail(res.data.mail);
+			setAdmin(res.data.admin)
 			setImageProfile(res.data.pic)
             
             if (res.data.error) {
@@ -53,7 +55,23 @@ const Account = () =>{
 
       };
 
-  
+	const deleteProfil = () => {
+        axios({
+            method: "DELETE",
+            url: `${process.env.REACT_APP_API_URL}api/auth/${id} `,
+            headers: {
+                authorization: `Bearer ${token}`
+            },
+        })
+            .then((res) => {
+                if (res.data.error)
+                    console.log(res.data.error)
+            })
+            .catch((err) => {
+                console.log(err)
+            }
+            )
+    }
 
 	return(
 		<section>
@@ -69,6 +87,9 @@ const Account = () =>{
 					<p>Contact : {mail}</p>
 					<li onClick={handleProfil} id="showProfil" className="active-btn">Modifier</li>
 					{profilModal && <ChangeProfil />}
+					{userId === id || admin === 1 ? (
+					<li onClick={deleteProfil} id="deleteProfil" className="active-btn">Supprimer</li>)
+					:("")}
 					</div>
 
 					

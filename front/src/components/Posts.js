@@ -44,7 +44,7 @@ function Posts({ fname, message, postUserId, postId, date, like, getAllPosts }) 
         })
             .then((res) => {
                 if (res.data) {
-                    console.log(res.data)
+                    console.log("test", res.data)
                     setComments(res.data)
                 }
                 else
@@ -118,12 +118,15 @@ function Posts({ fname, message, postUserId, postId, date, like, getAllPosts }) 
                     {comments.map(comments =>
                     (
                         <Comments
-                            key={comments.id}
+                            
+                            id={comments.id}
                             comment={comments.comment}
-                            userId={comments.user_id}
-                            postId={comments.post_id}
+                            comUserId={comments.user_id}
+                            
                             fname={comments.fname}
-                            date={comments.creation_time} />
+                            date={comments.creation_time} 
+                            getComments={getComments}/>
+
                     )
                     )}
                     <form>
