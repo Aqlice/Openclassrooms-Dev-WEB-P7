@@ -1,30 +1,51 @@
+$Primary : #fd2d01;
+$Secondary: #ffd7d7;
+$Third: #a5a6aa;
+
+
 .poster-container {
     width: 80%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left:2%;
     align-items: center;
     margin-left: 10%;
-    background-color: red;
+    background-color: $Third;
     height: 250px;
-    border-radius: 20px;
+    border-radius: 15px;
+    textarea{
+        width: 120%;
+        height: 4rem;
+        word-break: break-all;
+        margin-right: 25%;
+        margin-bottom: 2%;
+    }
 }
 
 #profileImage {
-    height: 100%;
-    width: 100%;
-    margin-bottom: 20px;
+    height: 7rem;
+    width: 7rem;
+  border-radius: 15px;
+   margin-right: 3%;
 }
 
-#post {
-    margin-bottom: 20px;
-}
+
 
 #create-post {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color:white;
     width: 7rem;
     height: 2rem;
-    border-radius: 20px;
-    box-shadow: 5px 5px 15px 5px gray;
+    border-radius: 15px;
+    //box-shadow: 5px 5px 15px 5px black;
+    margin-top: 2%;
+    &:hover{
+
+        box-shadow: 5px 5px 15px 5px black;
+        background-color: #fd2d01;
+    }
+    //margin-left:50px ;
 }

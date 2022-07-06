@@ -3,7 +3,8 @@ $Secondary: #ffd7d7;
 $Third: #a5a6aa;
 
 .account-container {
-    background-color: $Primary;
+   // background-color: $Primary;
+   border: 2px solid $Primary;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,24 +25,49 @@ $Third: #a5a6aa;
         width: 5rem;
     }
 
-    #showProfil {
+    #showProfil , #change-profil{
         display: flex;
         justify-content: center;
         align-items: center;
         width: 7rem;
         height: 2rem;
-        border-radius: 20px;
-        box-shadow: 5px 5px 15px 5px gray;
+        border-radius: 15px;
+        box-shadow: 5px 5px 15px 5px $Third;
         margin-bottom: 10px;
-    }
+        background-color: white;
+        &:hover{
 
+           // box-shadow: 5px 5px 15px 5px black;
+           cursor: pointer;
+           transform: scale(1.1);
+        }
+    
+    }
+    
     p {
         display: flex;
         align-self: center;
         margin-bottom: 10px;
     }
-    #changeProfil {
-        display: flex;
+    input{
+        border:$Primary 2px solid;
+        border-radius: 15px;
+    }
+    #change-profil {
+        //padding-bottom: 1rem;
+        height: 2.2rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 11rem;
+        border:none;
+
+    li{
         background-color: blue;
     }
+          
+    }
+   /* #changeProfil {
+        display: flex;
+        background-color: blue;
+    }*/
 }

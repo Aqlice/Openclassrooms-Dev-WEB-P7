@@ -36,7 +36,7 @@ const Home = () => {
         }).then((res) => {
             setPosts(res.data)
             setTotalItems(res.data.length)
-            console.log("ca marche ou pas")
+            console.log("ca marche ou pas", res.data)
             if (res.data.error) {
                 console.log(res.data.errors)
 
@@ -58,12 +58,13 @@ const Home = () => {
                     (
                         <Posts
                             key={posts.id}
-                            fname={posts.fname}
+                            fname={posts.post_user_name}
                             message={posts.message}
                             postUserId={posts.post_user_id}
                             postId={posts.post_id}
                             date={posts.creation_time} 
                             like={posts.total_like}
+                            pic={posts.post_pic}
                             getAllPosts={getAllPosts}/>
                     )
                     )}

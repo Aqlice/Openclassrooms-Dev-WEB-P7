@@ -7,7 +7,6 @@ exports.getAllPost = (req, res, next) => {
         if (err)
             throw err
         else {
-            //console.log(result)
             return res.status(200).json(result)
         }
     })
@@ -15,9 +14,11 @@ exports.getAllPost = (req, res, next) => {
 
 exports.createPost = (req, res, next) => {
     const sql = `INSERT INTO post SET ?`
+    console.log("body", req.body)
     const newPost = {
         message: req.body.message,
-        user_id: req.body.user_id
+        user_id: req.body.user_id,
+        pic: `${req.protocol}://${req.get('host')}/images/posts/${req.file.filename}`
     }
     db.query(sql, newPost, (err, result) => {
         if (err)

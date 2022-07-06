@@ -2,7 +2,7 @@
   margin: 0px;
 }
 
-* .nav-container {
+.nav-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,36 +17,32 @@
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #fd2d01;
-  height: 8rem;
+  height: 10rem;
   width: 100%;
   margin-bottom: 3rem;
+  /* h5{                           enlever le H% du navlink.js
+        color: black;
+        font-size: 2rem;
+        margin-right: 10%;
+    }*/
 }
 
-* .nav-container .logo {
-  height: 8rem;
+.nav-container .icon-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-item-align: center;
-      align-self: center;
-  padding-left: 3%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-* .nav-container h5 {
-  color: black;
-  font-size: 2rem;
-  margin-right: 10%;
+.nav-container img {
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
-* .nav-container img {
-  height: 2rem;
-  width: 2rem;
-}
-
-* .nav-container .nav-logo {
+.nav-container .nav-logo {
   background-color: blue;
 }
 /*# sourceMappingURL=NavBar.css.map */

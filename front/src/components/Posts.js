@@ -6,7 +6,7 @@ import Comments from "./Comments"
 import getAllPosts from "../pages/Home"
 import heart from "../image/icons/heart.svg"
 
-function Posts({ fname, message, postUserId, postId, date, like, getAllPosts }) {
+function Posts({ fname, message, postUserId, postId, date, pic, like, getAllPosts }) {
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
     const [posts, setPosts] = useState([])
@@ -107,24 +107,25 @@ function Posts({ fname, message, postUserId, postId, date, like, getAllPosts }) 
     return (
         <>
             <div className="post-container">
+                <p>posté par {fname}</p>
+                <img src={pic}/>
                 <p>{message}</p>
-                <p>{date}</p>
                 <li onClick={addLike}>
                     <img src={heart} id="heart" />
+                    <p> {like}</p>
                 </li>
-                <p> {like}</p>
                 <li onClick={getComments} id="getComments">afficher les commentaires</li>
                 <div className="comment-container" >
                     {comments.map(comments =>
                     (
                         <Comments
-                            
+
                             id={comments.id}
                             comment={comments.comment}
                             comUserId={comments.user_id}
                             fname={comments.fName}
-                            date={comments.creation_time} 
-                            getComments={getComments}/>
+                            date={comments.creation_time}
+                            getComments={getComments} />
 
                     )
                     )}

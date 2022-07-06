@@ -3,7 +3,7 @@ $Primary : #fd2d01;
 $Secondary: #ffd7d7;
 $Third: #a5a6aa;
 
-*{margin: 0px;
+*{margin: 0px;}
 
 .nav-container{
     
@@ -12,27 +12,28 @@ $Third: #a5a6aa;
     align-items: center;
     flex-direction: row;
     background-color: $Primary;
-    height: 8rem;
+    height: 10rem;
     width: 100%;
     margin-bottom: 3rem;
-    .logo{
-        height: 8rem;
-        display: flex;
-        justify-content: center;
-        align-self: center;
-        padding-left: 3%;
-    }
-    h5{
+    
+   /* h5{                           enlever le H% du navlink.js
         color: black;
         font-size: 2rem;
         margin-right: 10%;
+    }*/
+    .icon-link{
+       // background-color: aqua;
+        display: flex;
+        flex-direction: row;
+        
     }
     img{
-        height: 2rem;
-        width: 2rem;
+        height: 1.5rem;
+        width: 1.5rem;
+        
     }
     .nav-logo {
         background-color: blue;
     }
 }
-}
+
