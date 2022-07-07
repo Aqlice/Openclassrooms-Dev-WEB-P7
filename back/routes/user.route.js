@@ -10,5 +10,6 @@ router.post('/signin', userCtrl.signin)
 router.get('/:id', auth, userCtrl.userInfo)
 router.put('/:id', auth, multer, userCtrl.modifyUser)
 router.delete('/:id', auth, userCtrl.deleteUser)
+router.get('/', auth, userCtrl.searchUser)
 
 module.exports = router

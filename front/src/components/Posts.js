@@ -6,7 +6,7 @@ import Comments from "./Comments"
 import getAllPosts from "../pages/Home"
 import heart from "../image/icons/heart.svg"
 
-function Posts({ fname, message, postUserId, postId, date, pic, like, getAllPosts }) {
+function Posts({ fname, message, postUserId, postId, date, pic, like, admin, getAllPosts }) {
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
     const [posts, setPosts] = useState([])
@@ -14,6 +14,7 @@ function Posts({ fname, message, postUserId, postId, date, pic, like, getAllPost
     const [newComment, setNewComment] = useState('')
     const [likes, setLikes] = useState(false)
 
+    console.log(admin)
     const deletePost = () => {
         axios({
             method: "DELETE",
@@ -84,6 +85,28 @@ function Posts({ fname, message, postUserId, postId, date, pic, like, getAllPost
             });
     }
 
+    const getUser = () => {
+        axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_API_URL}api/auth/${postUserId} `,
+
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }).then((res) => {
+            console.log(res);
+            window.location = `/account/${postUserId}`
+            if (res.data.error) {
+                console.log("ici", res.data.errors)
+
+            }
+        })
+            .catch((err) => {
+                console.log(err);
+            });
+
+    };
+
     const addLike = () => {
 
         axios({
@@ -107,8 +130,8 @@ function Posts({ fname, message, postUserId, postId, date, pic, like, getAllPost
     return (
         <>
             <div className="post-container">
-                <p>posté par {fname}</p>
-                <img src={pic}/>
+                <li onClick={getUser} id="showProfil" className="active-btn">posté par {fname}</li>
+                <img src={pic} />
                 <p>{message}</p>
                 <li onClick={addLike}>
                     <img src={heart} id="heart" />
@@ -119,13 +142,14 @@ function Posts({ fname, message, postUserId, postId, date, pic, like, getAllPost
                     {comments.map(comments =>
                     (
                         <Comments
-
+                            key={comments.id}
                             id={comments.id}
                             comment={comments.comment}
                             comUserId={comments.user_id}
                             fname={comments.fName}
                             date={comments.creation_time}
-                            getComments={getComments} />
+                            getComments={getComments} 
+                            admin={admin}/>
 
                     )
                     )}
@@ -135,7 +159,7 @@ function Posts({ fname, message, postUserId, postId, date, pic, like, getAllPost
                         <li onClick={createComment} id="create-comment" className="active-btn">ajouter un commentaire</li>
                     </form>
                 </div>
-                {postUserId === userId ? (
+                {postUserId === userId || admin == 1? (
                     <li onClick={deletePost} id="delete-post" className="active-btn">supprimer</li>)
                     : ("")
                 }

@@ -15,10 +15,17 @@ exports.getAllPost = (req, res, next) => {
 exports.createPost = (req, res, next) => {
     const sql = `INSERT INTO post SET ?`
     console.log("body", req.body)
-    const newPost = {
-        message: req.body.message,
-        user_id: req.body.user_id,
-        pic: `${req.protocol}://${req.get('host')}/images/posts/${req.file.filename}`
+    if (req.file) {
+        newPost = {
+            message: req.body.message,
+            user_id: req.body.user_id,
+            pic: `${req.protocol}://${req.get('host')}/images/posts/${req.file.filename}`
+        }
+    } else {
+        newPost = {
+            message: req.body.message,
+            user_id: req.body.user_id,
+        }
     }
     db.query(sql, newPost, (err, result) => {
         if (err)

@@ -13,7 +13,7 @@ function Poster({ getAllPosts }) {
     const [fname, setfname] = useState('');
     const [message, setMessage] = useState('')
     const [imageProfile, setImageProfile] = useState()
-    const [postPic, setPostPic] = useState()
+    const [postPic, setPostPic] = useState([])
 
     const userId = JSON.parse(localStorage.userId)
     const token = JSON.parse(localStorage.token)
@@ -50,10 +50,10 @@ function Poster({ getAllPosts }) {
         const form = new FormData()
         form.append('user_id', userId)
         form.append('message', message)
-        form.append('image', postPic[0])
+        if (postPic[0])
+            form.append('image', postPic[0])
         console.log("dewfdw", userId)
         console.log(form.get('user_id'))
-        console.log("postpic", postPic)
         axios
             .post(`${process.env.REACT_APP_API_URL}api/posts/ `, form, {
                 headers: {

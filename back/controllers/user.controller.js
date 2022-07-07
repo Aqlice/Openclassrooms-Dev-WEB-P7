@@ -68,7 +68,7 @@ exports.signin = (req, res, next) => {
 }
 
 exports.userInfo = (req, res, next) => {
-    const sql = `SELECT name, fname, mail, pic FROM user WHERE UID=?`
+    const sql = `SELECT name, fname, mail, admin, pic FROM user WHERE UID=?`
     db.query(sql, req.params.id, async (err, result) => {
         if (err)
             throw err
@@ -76,6 +76,22 @@ exports.userInfo = (req, res, next) => {
             return res.status(400).json({ error: "Utilisateur non trouvé" })
         else {
             res.status(200).json(result[0])
+        }
+    })
+}
+
+exports.searchUser = (req, res, next) => {
+    console.log("testeyfteuwfew")
+    console.log("reqparams", req.query)
+    const sql = `SELECT name, fname, mail, pic FROM user WHERE name=? OR fname=?`
+    db.query(sql, [req.query.user, req.query.user], async (err, result) => {
+        if (err)
+            throw err
+        if (result.length === 0)
+            return res.status(400).json({ error: "Utilisateur non trouvé" })
+        else {
+            console.log(result)
+            res.status(200).json(result)
         }
     })
 }

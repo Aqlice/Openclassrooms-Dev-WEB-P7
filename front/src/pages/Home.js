@@ -11,7 +11,7 @@ const Home = () => {
     useEffect(() => {
 
         getAllPosts()
-        setPages((pages) => pages + 1)
+        getUser()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
 
@@ -22,6 +22,9 @@ const Home = () => {
 
     const [totalItems, setTotalItems] = useState(0)
     const [pages, setPages] = useState(0)
+    const [admin, setAdmin] = useState(0)
+    const [search, setSearch] = useState('')
+    const [searchResult, setSearchResult] = useState([])
 
 
     const getAllPosts = async () => {
@@ -47,9 +50,70 @@ const Home = () => {
             })
 
     }
+
+    const getUser = () => {
+        axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_API_URL}api/auth/${userId} `,
+
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }).then((res) => {
+            setAdmin(res.data.admin)
+            if (res.data.error) {
+                console.log("ici", res.data.errors)
+
+            }
+        })
+            .catch((err) => {
+                console.log(err);
+            });
+
+    };
+
+    const searchUser = async () => {
+        console.log(search)
+        /*axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_API_URL}api/auth/`,
+            params: {
+                user: search
+            },
+            headers: {
+                authorization: `Bearer ${token}`
+            }*/
+        axios.get(`${process.env.REACT_APP_API_URL}api/auth/`, {
+            params: {
+                user: search
+            },
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }).then((res) => {
+            if (res.data.error) {
+                console.log("ici", res.data.errors)
+
+            }
+            else {
+                const test1 = res.data
+                console.log(test1)
+            }
+        })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     return (
         <main>
             <section>
+
+                <div search-bar>
+                <input type="text" name="search-bar" id='search-bar' placeholder="recherche" onChange={(e) => setSearch
+                            (e.target.value)} value={search}></input>
+                <li onClick={searchUser} id="searchUser" className="active-btn">rechercher</li>
+                </div>
                 <div home-container>
                     <Poster getAllPosts={getAllPosts}/>
                 </div>
@@ -65,7 +129,8 @@ const Home = () => {
                             date={posts.creation_time} 
                             like={posts.total_like}
                             pic={posts.post_pic}
-                            getAllPosts={getAllPosts}/>
+                            getAllPostss={getAllPosts}
+                            admin={admin}/>
                     )
                     )}
                 </div>
