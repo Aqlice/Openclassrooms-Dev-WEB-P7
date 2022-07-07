@@ -3,6 +3,7 @@ import axios from 'axios';
 import Poster from '../components/Poster';
 import Posts from '../components/Posts'
 import Comments from '../components/Comments'
+import UserSearch from "./UserSearch"
 
 const Home = () => {
 
@@ -73,36 +74,7 @@ const Home = () => {
     };
 
     const searchUser = async () => {
-        console.log(search)
-        /*axios({
-            method: "GET",
-            url: `${process.env.REACT_APP_API_URL}api/auth/`,
-            params: {
-                user: search
-            },
-            headers: {
-                authorization: `Bearer ${token}`
-            }*/
-        axios.get(`${process.env.REACT_APP_API_URL}api/auth/`, {
-            params: {
-                user: search
-            },
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        }).then((res) => {
-            if (res.data.error) {
-                console.log("ici", res.data.errors)
-
-            }
-            else {
-                const test1 = res.data
-                console.log(test1)
-            }
-        })
-            .catch((err) => {
-                console.log(err);
-            });
+        window.location = `/UserSearch/${search}`
     }
 
     return (
@@ -110,12 +82,12 @@ const Home = () => {
             <section>
 
                 <div search-bar>
-                <input type="text" name="search-bar" id='search-bar' placeholder="recherche" onChange={(e) => setSearch
-                            (e.target.value)} value={search}></input>
-                <li onClick={searchUser} id="searchUser" className="active-btn">rechercher</li>
+                    <input type="text" name="search-bar" id='search-bar' placeholder="recherche" onChange={(e) => setSearch
+                        (e.target.value)} value={search}></input>
+                    <li onClick={searchUser} id="searchUser" className="active-btn">rechercher</li>
                 </div>
                 <div home-container>
-                    <Poster getAllPosts={getAllPosts}/>
+                    <Poster getAllPosts={getAllPosts} />
                 </div>
                 <div className='post-container'>
                     {posts.map(posts =>
@@ -126,11 +98,11 @@ const Home = () => {
                             message={posts.message}
                             postUserId={posts.post_user_id}
                             postId={posts.post_id}
-                            date={posts.creation_time} 
+                            date={posts.creation_time}
                             like={posts.total_like}
                             pic={posts.post_pic}
                             getAllPostss={getAllPosts}
-                            admin={admin}/>
+                            admin={admin} />
                     )
                     )}
                 </div>
@@ -138,5 +110,4 @@ const Home = () => {
         </main>
     )
 }
-
 export default Home;

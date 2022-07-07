@@ -12,5 +12,6 @@ router.get('/:id', auth, postCtrl.getComments)
 router.post('/comments', auth, postCtrl.createComment)
 router.post('/like', auth, postCtrl.addLike)
 router.delete('/com/:id', auth, postCtrl.deleteCom)
+router.get('/getposts/:id', auth, postCtrl.getPostsFromUser)
 
 module.exports = router

@@ -3,6 +3,7 @@ import React, { useEffect, useState, } from 'react';
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import ChangeProfil from '../components/changeProfil';
 import avatar from "../image/avatar.png"
+import Posts from '../components/Posts'
 
 
 const Account = () => {
@@ -14,6 +15,7 @@ const Account = () => {
 	const [mail, setmail] = useState('')
 	const [imageProfile, setImageProfile] = useState('')
 	const [admin, setAdmin] = useState(0)
+	const [posts, setPosts] = useState([])
 
 
 	const [profilModal, setProfilModal] = useState(false);
@@ -95,6 +97,21 @@ const Account = () => {
 			)
 	}
 
+	const getPostsFromUser = () => {
+		axios.get(`${process.env.REACT_APP_API_URL}api/posts/getposts/${id}`, {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }).then((res) => {
+            if (res.data.error) {
+                console.log("ici", res.data.errors)
+
+            }
+            else {
+                setPosts(res.data)
+            }
+	})}
+
 	return (
 		<section>
 			<div className='account-container'>
@@ -121,8 +138,25 @@ const Account = () => {
 						<p> nom: {name}</p>
 						<p> Prenom: {fname}</p>
 						<p>Contact: {mail}</p>
+						<li onClick={getPostsFromUser} id="getPostsFromUser" className="active-btn">afficher les posts</li>
 					</div>
 				)}
+				<div className='post-container'>
+                    {posts.map(posts =>
+                    (
+                        <Posts
+                            key={posts.id}
+                            fname={posts.post_user_name}
+                            message={posts.message}
+                            postUserId={posts.post_user_id}
+                            postId={posts.post_id}
+                            date={posts.creation_time} 
+                            like={posts.total_like}
+                            pic={posts.post_pic}
+                            admin={admin}/>
+                    )
+                    )}
+                </div>
 
 			</div>
 		</section>

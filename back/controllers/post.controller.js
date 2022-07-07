@@ -89,6 +89,19 @@ exports.createComment = (req, res, next) => {
     })
 }
 
+exports.getPostsFromUser = (req, res, next) => {
+    const user = req.params.id
+    console.log("test1", user)
+    const sql = `SELECT post.id AS post_id, post.pic AS post_pic, post.message, post.creation_time, post.user_id as post_user_id, user.fname as post_user_name, COUNT(likes.post_id) AS total_like FROM post LEFT JOIN user ON UID = ? LEFT JOIN likes ON post.id = likes.post_id WHERE post.user_id = ? GROUP BY post.id`
+    db.query(sql, [user,user], async (err, result) => {
+        if (err)
+            throw err
+        else {
+            return res.status(200).json(result)
+        }
+    })
+}
+
 exports.addLike = (req, res, next) => {
     let a = 0
     const sql = ` SELECT * FROM likes WHERE user_id = '${req.body.user_id}' AND post_id = ${req.body.post_id}`

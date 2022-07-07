@@ -83,7 +83,7 @@ exports.userInfo = (req, res, next) => {
 exports.searchUser = (req, res, next) => {
     console.log("testeyfteuwfew")
     console.log("reqparams", req.query)
-    const sql = `SELECT name, fname, mail, pic FROM user WHERE name=? OR fname=?`
+    const sql = `SELECT name, fname, mail, pic, UID FROM user WHERE name=? OR fname=?`
     db.query(sql, [req.query.user, req.query.user], async (err, result) => {
         if (err)
             throw err

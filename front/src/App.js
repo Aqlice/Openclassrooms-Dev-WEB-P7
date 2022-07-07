@@ -7,6 +7,7 @@ import Login from "./pages/Login.js";
 import Account from "./pages/Account.js";
 import Navbar from "./components/Navbar.js";
 import './styles/index.css';
+import UserSearch from "./pages/UserSearch"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/account/:id" element={<Account />} />
+            <Route path="/UserSearch/:id" element={<UserSearch />}/>
            
           </Routes>
         </BrowserRouter>
