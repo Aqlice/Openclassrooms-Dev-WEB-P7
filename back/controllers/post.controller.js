@@ -75,6 +75,7 @@ exports.getComments = (req, res, next) => {
 }
 
 exports.createComment = (req, res, next) => {
+
     const sql = `INSERT INTO comments SET ?`
     const newCom = {
         comment: req.body.comment,
@@ -87,6 +88,7 @@ exports.createComment = (req, res, next) => {
         else
             return res.status(200).json(result)
     })
+
 }
 
 exports.getPostsFromUser = (req, res, next) => {
@@ -135,29 +137,34 @@ exports.addLike = (req, res, next) => {
 exports.modifyPost = (req, res, next) => {
 
     console.log(req.params)
+    let updated = {}
+    if (req.body.message) {
+        updated = {...updated, message: req.body.message}
+    }
     if (req.file) {
-        let updated = {
-            message: req.body.message,
-            pic: `${req.protocol}://${req.get('host')}/images/posts/${req.file.filename}`
-        }
-        const sql = `UPDATE post SET ? WHERE ID=?`
-        db.query(sql, [updated, req.params.id], async (err, result) => {
-            if (err)
-                throw err
-            else
-                res.status(200).json(result)
-        })
+        updated = { ...updated, pic: `${req.protocol}://${req.get('host')}/images/posts/${req.file.filename}` }
+        /*       let updated = {
+                   message: req.body.message,
+                   pic: `${req.protocol}://${req.get('host')}/images/posts/${req.file.filename}`
+               }*/
     }
-    else {
-        let updated = {
-            message: req.body.message,
-        }
-        const sql = `UPDATE post SET ? WHERE ID=?`
-        db.query(sql, [updated, req.params.id], async (err, result) => {
-            if (err)
-                throw err
-            else
-                res.status(200).json(result)
-        })
-    }
+    const sql = `UPDATE post SET ? WHERE ID=?`
+    db.query(sql, [updated, req.params.id], async (err, result) => {
+        if (err)
+            throw err
+        else
+            res.status(200).json(result)
+    })
+    /* else {
+         let updated = {
+             message: req.body.message,
+         }
+         const sql = `UPDATE post SET ? WHERE ID=?`
+         db.query(sql, [updated, req.params.id], async (err, result) => {
+             if (err)
+                 throw err
+             else
+                 res.status(200).json(result)
+         })
+     }*/
 }

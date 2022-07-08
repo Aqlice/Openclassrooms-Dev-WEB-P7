@@ -7,7 +7,7 @@ const userRoutes = require('./routes/user.route')
 const app = express()
 
 app.use(express.json())
-
+/* helmet*/
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader ('Access-Control-Expose-Headers', 'Content-Length, X-JSON')

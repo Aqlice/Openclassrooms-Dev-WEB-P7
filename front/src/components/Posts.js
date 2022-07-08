@@ -151,7 +151,7 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
                         <img src={heart} id="heart" />
                         <p id="like"> {like}</p>
                     </li>
-                    {postUserId === userId ? (
+                    {postUserId === userId || admin === 1 ? (
                         <li onClick={handlePost} id="handlepost" className="active-btn">Modifier post</li>)
                         : ("")}
                     {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}

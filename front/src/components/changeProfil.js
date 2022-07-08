@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useParams } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 
 function ChangeProfil() {
@@ -10,7 +10,7 @@ function ChangeProfil() {
     const [fname, setfname] = useState("");
     const [name, setname] = useState("");
     const [imageProfileUpload, setImageProfileUpload] = useState([]);
-
+    const navigate = useNavigate()
     let { id } = useParams();
     const token = JSON.parse(localStorage.token)
 
@@ -39,7 +39,7 @@ function ChangeProfil() {
                 },
             })
             .then((res) => {
-                window.location = `/account/${id}`
+                navigate(`/account/${id}`)
                 console.log(res)
             })
     }

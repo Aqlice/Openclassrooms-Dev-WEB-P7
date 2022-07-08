@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 
 
-function ChangePost(postId, getAllPosts) {
+function ChangePost({postId, getAllPosts}) {
 
     const [message, setMessage] = useState("");
     const [imagePost, setImagePost] = useState([]);
@@ -17,7 +17,7 @@ function ChangePost(postId, getAllPosts) {
         const form = new FormData()
         form.append('message', message)
         form.append('image', imagePost[0])
-        console.log(postId.postId)
+        console.log(postId)
         /*axios({
             method: "PUT",
             url: `${process.env.REACT_APP_API_URL}api/auth/${id} `,
@@ -27,14 +27,15 @@ function ChangePost(postId, getAllPosts) {
                 "Content-Type": "multipart/form-data"
             }*/
         axios
-            .put(`${process.env.REACT_APP_API_URL}api/posts/modifypost/${postId.postId} `, form, {
+            .put(`${process.env.REACT_APP_API_URL}api/posts/modifypost/${postId} `, form, {
                 headers: {
                     authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",
                 },
             })
             .then((res) => {
-                window.location = 'http://localhost:3000/home'
+                getAllPosts()
+                //window.location = 'http://localhost:3000/home'
                 console.log(res)
             })
     }
