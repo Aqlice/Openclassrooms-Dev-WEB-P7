@@ -1,6 +1,7 @@
-$Primary : #fd2d01;
-$Secondary: #ffd7d7;
-$Third: #a5a6aa;
+$Primary: #ce4257;
+$Primary-light:#e2d6d7;
+$Secondary: #ff7f51;
+$Third: #720026;
 body {
   background-color: white;
 }
@@ -11,7 +12,7 @@ body {
   justify-content: space-between;
   height: auto;
   width: auto;
-  background-color:$Primary;
+  background-color:$Primary-light;
   border-radius: 20px;
   padding: 1rem;
   border: $Primary 2px solid;
@@ -54,15 +55,7 @@ ul {
   
 }
 .active-btn {
-  //background: $Primary;
-  border: 1px solid $Third;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-  &:hover{
-    transform: scale(1.1);
-    //border:$Primary 1px solid;
-    
-  }
+  background: $Primary;
 
   
 }

@@ -52,7 +52,6 @@ function Comments({ id, comment, comUserId, date, admin, fname, getComments }) {
         <div className="comment-box">
 
             <li onClick={getUser} id="showProfil" className="active-btn">posté par {fname}</li>
-            <p>posté par {fname}</p>
             <p>{comment}</p>
             {
         comUserId === userId || admin === 1 ? (

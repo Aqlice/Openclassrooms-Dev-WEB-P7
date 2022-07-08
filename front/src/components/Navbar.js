@@ -3,6 +3,8 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import Logout from "./login/logout"
 import userIcon from "../image/icons/user.svg"
+import logo from "../image/icons/icon-left-font-monochrome-black.png"
+import arrow from "../image/icons/arrow-right-to-bracket-solid.svg"
 
 function Navbar() {
     return (
@@ -11,7 +13,7 @@ function Navbar() {
                 <div className='logo'>
                     <NavLink  to="/home">
                         <div className='logo' id="nav-logo">
-                            <img src="./logo/icon-left-font-monochrome-black.png" alt='logo groupomania' />
+                            <img src={logo} alt='logo groupomania' />
                         </div>
                     </NavLink>
                 </div>
@@ -26,7 +28,7 @@ function Navbar() {
                         </li>
                         <li onClick={Logout}>
                             <NavLink to="/login">
-                                <img src="./arrow-right-to-bracket-solid.svg" alt='img log out' />
+                                <img src={arrow} alt='img log out' />
                             </NavLink>
                         </li>
 

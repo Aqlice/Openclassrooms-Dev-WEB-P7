@@ -1,0 +1,33 @@
+$Primary : #fd2d01;
+$Secondary: #ffd7d7;
+$Third: #a5a6aa;
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
+    width: 85%;
+    border-radius: 20px;
+    .post-container {
+        margin: 2rem;
+        background-color: $Secondary;
+        padding : 1rem;
+    }
+    #heart {
+        height: 10px;
+        width: 10px;
+    }
+    li {
+        list-style: none;
+        display : flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

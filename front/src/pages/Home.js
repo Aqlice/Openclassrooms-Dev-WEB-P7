@@ -101,7 +101,8 @@ const Home = () => {
                             date={posts.creation_time}
                             like={posts.total_like}
                             pic={posts.post_pic}
-                            getAllPostss={getAllPosts}
+                            userPic={posts.pic}
+                            getAllPosts={getAllPosts}
                             admin={admin} />
                     )
                     )}

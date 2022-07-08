@@ -36,7 +36,7 @@ const SignUpForm = () => {
                 passwordError.innerHTML = res.data.errors.password;
               } else {
                 console.log(localStorage)
-                //window.location = "/login"
+                window.location = "/login"
               }
             })
             .catch((err) => console.log(err));
@@ -47,14 +47,14 @@ const SignUpForm = () => {
     return (
         <form action="" onSubmit={handleSignUp} id="sign-up-form">
             
-            <label htmlFor='first-name'>Nom</label>
+            <label htmlFor='first-name'>prenom</label>
             <br />
             <input type="text" name="first-name" id='first-name' onChange={(e) => setFirstName
                 (e.target.value)} value={firstName}></input>
             <div className='first-name error'></div>
             <br />
 
-            <label htmlFor='last-name'> Prenom</label>
+            <label htmlFor='last-name'> nom</label>
             <br />
             <input type="text" name="last-name" id='last-name' onChange={(e) => setLastName
                 (e.target.value)} value={lastName}></input>

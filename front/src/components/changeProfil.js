@@ -38,7 +38,10 @@ function ChangeProfil() {
                     "Content-Type": "multipart/form-data",
                 },
             })
-            .then((res) => console.log(res))
+            .then((res) => {
+                window.location = `/account/${id}`
+                console.log(res)
+            })
     }
     //})
     //        .then((res) => {

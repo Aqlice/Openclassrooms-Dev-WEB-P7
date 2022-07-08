@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,OAAO,CAAP,+DAAO;AACP,OAAO,CAAP,gEAAO;AACP,OAAO,CAAP,8DAAO;AACP,OAAO,CAAP,8DAAO;AACP,OAAO,CAAP,gEAAO;AACP,OAAO,CAAP,8DAAO;AACP,OAAO,CAAP,iEAAO;AACP,OAAO,CAAP,iEAAO",
+    "sources": [
+        "index.scss"
+    ],
+    "names": [],
+    "file": "index.css"
+}

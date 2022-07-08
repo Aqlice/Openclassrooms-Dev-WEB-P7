@@ -5,16 +5,24 @@ import avatar from "../image/avatar.png"
 import Comments from "./Comments"
 import getAllPosts from "../pages/Home"
 import heart from "../image/icons/heart.svg"
+import commentIcon from "../image/icons/comment.svg"
+import ChangePost from '../components/changePost'
 
-function Posts({ fname, message, postUserId, postId, date, pic, like, admin, getAllPosts }) {
+function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, admin, getAllPosts }) {
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
     const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState('')
     const [likes, setLikes] = useState(false)
+    const [postModal, setPostModal] = useState(false)
 
     console.log(admin)
+
+    const handlePost = (e) => {
+        setPostModal(true)
+    }
+
     const deletePost = () => {
         axios({
             method: "DELETE",
@@ -127,17 +135,28 @@ function Posts({ fname, message, postUserId, postId, date, pic, like, admin, get
 
         console.log("ici5")
     }
+
     return (
         <>
             <div className="post-container">
-                <li onClick={getUser} id="showProfil" className="active-btn">posté par {fname}</li>
-                <img src={pic} />
+                <li onClick={getUser} id="poster-name" className="active-btn">posté par {fname} </li>
+                <img src={userPic}></img>
+                {pic ? (
+                    <img src={pic} />)
+                    : ('')}
                 <p>{message}</p>
-                <li onClick={addLike}>
-                    <img src={heart} id="heart" />
-                    <p> {like}</p>
-                </li>
-                <li onClick={getComments} id="getComments">afficher les commentaires</li>
+
+                <div className="like-comment-ligne">
+                    <li onClick={addLike}>
+                        <img src={heart} id="heart" />
+                        <p id="like"> {like}</p>
+                    </li>
+                    {postUserId === userId ? (
+                        <li onClick={handlePost} id="handlepost" className="active-btn">Modifier post</li>)
+                        : ("")}
+                    {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}
+                    <li onClick={getComments} id="getComments"><img src={commentIcon} id="icon-comment" /></li>
+                </div>
                 <div className="comment-container" >
                     {comments.map(comments =>
                     (
@@ -148,18 +167,18 @@ function Posts({ fname, message, postUserId, postId, date, pic, like, admin, get
                             comUserId={comments.user_id}
                             fname={comments.fName}
                             date={comments.creation_time}
-                            getComments={getComments} 
-                            admin={admin}/>
+                            getComments={getComments}
+                            admin={admin} />
 
                     )
                     )}
                     <form>
-                        <input type="text" name="comment" id='comment' placeholder="commentaire" onChange={(e) => setNewComment
-                            (e.target.value)} value={newComment}></input>
+                        <textarea type="text" name="comment" id='comment' placeholder="commentaire" onChange={(e) => setNewComment
+                            (e.target.value)} value={newComment}></textarea>
                         <li onClick={createComment} id="create-comment" className="active-btn">ajouter un commentaire</li>
                     </form>
                 </div>
-                {postUserId === userId || admin == 1? (
+                {postUserId === userId || admin == 1 ? (
                     <li onClick={deletePost} id="delete-post" className="active-btn">supprimer</li>)
                     : ("")
                 }

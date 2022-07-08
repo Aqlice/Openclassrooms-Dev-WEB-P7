@@ -1,0 +1,13 @@
+.comment-box {
+  height: auto;
+  width: 100%;
+  border: solid 2px black;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.comment-box p {
+  padding: 10px;
+}
+/*# sourceMappingURL=comment.css.map */

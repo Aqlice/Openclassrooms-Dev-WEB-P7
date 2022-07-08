@@ -100,19 +100,34 @@ exports.modifyUser = (req, res, next) => {
 
     console.log("req body image", req.body.image)
     console.log("req file", req.file)
-    const updated = {
-        name: req.body.name,
-        fname: req.body.fname,
-        mail: req.body.mail,
-        pic: `${req.protocol}://${req.get('host')}/images/profils/${req.file.filename}`
+    if (req.file) {
+        const updated = {
+            name: req.body.name,
+            fname: req.body.fname,
+            mail: req.body.mail,
+            pic: `${req.protocol}://${req.get('host')}/images/profils/${req.file.filename}`
+        }
+        const sql = `UPDATE user SET ? WHERE UID=?`
+        db.query(sql, [updated, req.params.id], async (err, result) => {
+            if (err)
+                throw err
+            else
+                res.status(200).json(result)
+        })
+    } else {
+        const updated = {
+            name: req.body.name,
+            fname: req.body.fname,
+            mail: req.body.mail,
+        }
+        const sql = `UPDATE user SET ? WHERE UID=?`
+        db.query(sql, [updated, req.params.id], async (err, result) => {
+            if (err)
+                throw err
+            else
+                res.status(200).json(result)
+        })
     }
-    const sql = `UPDATE user SET ? WHERE UID=?`
-    db.query(sql, [updated, req.params.id], async (err, result) => {
-        if (err)
-            throw err
-        else
-            res.status(200).json(result)
-    })
 }
 
 exports.deleteUser = (req, res, next) => {

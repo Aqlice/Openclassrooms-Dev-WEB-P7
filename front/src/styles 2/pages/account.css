@@ -33,7 +33,7 @@
       align-self: center;
 }
 
-.account-container img {
+.account-container .img {
   height: 5rem;
   width: 5rem;
 }

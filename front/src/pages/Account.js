@@ -108,6 +108,7 @@ const Account = () => {
 
             }
             else {
+				console.log(res.data)
                 setPosts(res.data)
             }
 	})}
@@ -138,9 +139,9 @@ const Account = () => {
 						<p> nom: {name}</p>
 						<p> Prenom: {fname}</p>
 						<p>Contact: {mail}</p>
-						<li onClick={getPostsFromUser} id="getPostsFromUser" className="active-btn">afficher les posts</li>
 					</div>
 				)}
+				<li onClick={getPostsFromUser} id="getPostsFromUser" className="active-btn">afficher les posts</li>
 				<div className='post-container'>
                     {posts.map(posts =>
                     (
@@ -153,6 +154,7 @@ const Account = () => {
                             date={posts.creation_time} 
                             like={posts.total_like}
                             pic={posts.post_pic}
+							userPic={posts.pic}
                             admin={admin}/>
                     )
                     )}

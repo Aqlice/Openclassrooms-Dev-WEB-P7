@@ -9,24 +9,28 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  margin-left: 8%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-item-align: center;
       align-self: center;
   width: 85%;
-  border-radius: 20px;
+  border-radius: 15px;
+  background-color: #a5a6aa;
+  margin-top: 3rem;
 }
 
 .post-container .post-container {
   margin: 2rem;
-  background-color: #ffd7d7;
+  background-color: white;
   padding: 1rem;
+  width: 80%;
 }
 
-.post-container #heart {
-  height: 10px;
-  width: 10px;
+.post-container img {
+  max-width: 15rem;
+  max-height: 15rem;
 }
 
 .post-container li {
@@ -43,8 +47,64 @@
   gap: 10px;
 }
 
-.post-container img {
+.post-container li:hover {
+  background-color: white;
+}
+
+#heart, #like {
+  height: 1rem;
+  width: 1rem;
+  list-style: none;
+  padding-top: 1rem;
+}
+
+#heart:hover, #like:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: white;
+}
+
+#poster-name {
+  margin-bottom: 2rem;
+}
+
+#icon-comment {
+  width: 1rem;
+  height: 1rem;
+  padding-top: 1rem;
+}
+
+#icon-comment:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: white;
+}
+
+.like-comment-ligne {
   width: 100%;
-  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10rem;
+  border-top: 1px solid #fd2d01;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#delete-post {
+  margin-top: 1rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+#delete-post:hover {
+  border: none;
+  border-bottom: red  2px solid;
 }
 /*# sourceMappingURL=post.css.map */

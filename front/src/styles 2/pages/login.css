@@ -15,10 +15,10 @@ body {
           justify-content: space-between;
   height: auto;
   width: auto;
-  background-color: #fd2d01;
+  background-color: #e2d6d7;
   border-radius: 20px;
   padding: 1rem;
-  border: #fd2d01 2px solid;
+  border: #ce4257 2px solid;
 }
 
 .form-container {
@@ -86,20 +86,13 @@ ul li {
 }
 
 .active-btn {
-  border: 1px solid #a5a6aa;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-}
-
-.active-btn:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  background: #ce4257;
 }
 
 li:not(.active-btn):hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-  background: #fd2d01;
+  background: #ce4257;
 }
 
 input {
@@ -107,15 +100,15 @@ input {
   height: 2rem;
   width: 12rem;
   border-radius: 20px;
-  border: #fd2d01 2px solid;
+  border: #ce4257 2px solid;
 }
 
 input[type="submit"] {
-  background: #fd2d01;
+  background: #ce4257;
   margin-right: 14px;
   height: 2.5rem;
   width: 12.5rem;
-  border: #fd2d01 2px solid;
+  border: #ce4257 2px solid;
   cursor: pointer;
   -webkit-transition: 0.2s;
   transition: 0.2s;
