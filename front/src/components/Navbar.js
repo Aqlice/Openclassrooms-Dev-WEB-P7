@@ -34,14 +34,7 @@ function Navbar() {
 
                     </ul>
                 ) : (
-                    <ul>
-                        <li></li>
-                        <li>
-                            <NavLink  to="/login">
-                                <h5>Bienvenue qui es tu</h5>
-                            </NavLink>
-                        </li>
-                    </ul>
+                    ("")
                 )}
             </div>
 

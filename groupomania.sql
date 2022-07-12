@@ -66,7 +66,7 @@ CREATE TABLE `user` (
   `mail` varchar(255) NOT NULL UNIQUE,
   `password` varchar(255) NOT NULL,
   `admin` tinyint(1) DEFAULT 0,
-  `pic` varchar(255) DEFAULT 'http://localhost:3500/images/profils/avatar.png'
+  `pic` varchar(255) DEFAULT 'http://localhost:3500/images/avatar.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

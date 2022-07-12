@@ -94,7 +94,8 @@ function Poster({ getAllPosts }) {
                 <form>
                     <textarea type="text" name="post" id='post' placeholder="Que souhaitez vous partager" onChange={(e) => setMessage
                         (e.target.value)} value={message}></textarea>
-                    <input type="file" name="post-picture" id='post-picture' onChange={(e) => setPostPic(e.target.files)} filename={postPic}></input>
+                    <input type="file" name="post-picture" id='post-picture' className='input-file' onChange={(e) => setPostPic(e.target.files)} filename={postPic}></input>
+                   <label for="post-picture">Choisir un fichier</label>
                     <li onClick={createPost} id="create-post" className="active-btn">Poster</li>
                 </form>
             </div>

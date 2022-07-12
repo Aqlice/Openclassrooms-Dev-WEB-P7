@@ -28,6 +28,7 @@
 }
 
 .nav-container .icon-link {
+  background-color: #fd2d01;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,8 +39,8 @@
 }
 
 .nav-container img {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.3rem;
+  width: 1.3rem;
 }
 
 .nav-container .nav-logo {

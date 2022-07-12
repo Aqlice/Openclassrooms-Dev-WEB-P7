@@ -3,7 +3,8 @@ $Primary : #fd2d01;
 $Secondary: #ffd7d7;
 $Third: #a5a6aa;
 
-*{margin: 0px;}
+*{margin: 0px;
+}
 
 .nav-container{
     
@@ -22,14 +23,17 @@ $Third: #a5a6aa;
         margin-right: 10%;
     }*/
     .icon-link{
-       // background-color: aqua;
+        background-color: $Primary;
+     // width: 10%;
         display: flex;
         flex-direction: row;
+       
+     
         
     }
     img{
-        height: 1.5rem;
-        width: 1.5rem;
+       height: 1.3rem;
+        width: 1.3rem;
         
     }
     .nav-logo {

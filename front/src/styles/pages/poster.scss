@@ -14,6 +14,7 @@ $Third: #a5a6aa;
     background-color: $Third;
     height: 250px;
     border-radius: 15px;
+    margin-top: 1rem;
     textarea{
         width: 87%;
         height: 4rem;
@@ -41,11 +42,39 @@ $Third: #a5a6aa;
     height: 2rem;
     border-radius: 15px;
     //box-shadow: 5px 5px 15px 5px black;
-    margin-top: 2%;
+    margin-top: 4%;
     &:hover{
 
         box-shadow: 5px 5px 15px 5px black;
        // background-color: #fd2d01;
     }
     //margin-left:50px ;
+}
+.input-file{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+   overflow: hidden;
+   
+   position: absolute;
+    z-index: -1;
+    
+}
+label{
+        
+    width: 4rem;
+    //background-color: #fd2d01;
+    z-index: 1;
+   // margin-bottom: rem;
+   
+   
+    &:hover{
+        transform: scale(1.035);
+        cursor: pointer;
+        // background-color: rgb(225, 222, 222);
+         border-bottom:1px solid $Primary ;
+
+
+}
+
 }

@@ -139,23 +139,25 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
     return (
         <>
             <div className="post-container">
-                <li onClick={getUser} id="poster-name" className="active-btn">posté par {fname} </li>
-                <img src={userPic}></img>
+                <div className='post-user-pic'>
+                <li onClick={getUser} id="poster-name" className="name">posté par {fname} </li>
+                <img src={userPic} id="user-pic"></img>
+                </div>
                 {pic ? (
                     <img src={pic} />)
                     : ('')}
                 <p>{message}</p>
-
+                    <div id="sepatation-line"></div>
                 <div className="like-comment-ligne">
                     <li onClick={addLike}>
                         <img src={heart} id="heart" />
                         <p id="like"> {like}</p>
                     </li>
                     {postUserId === userId || admin === 1 ? (
-                        <li onClick={handlePost} id="handlepost" className="active-btn">Modifier post</li>)
+                        <li onClick={handlePost} id="handlepost" className="name">Modifier post</li>)
                         : ("")}
                     {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}
-                    <li onClick={getComments} id="getComments"><img src={commentIcon} id="icon-comment" /></li>
+                    <li onClick={getComments} id="getComments"><img src={commentIcon} id="icon-comment" /><p>Afficher</p></li>
                 </div>
                 <div className="comment-container" >
                     {comments.map(comments =>
@@ -175,7 +177,7 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
                     <form>
                         <textarea type="text" name="comment" id='comment' placeholder="commentaire" onChange={(e) => setNewComment
                             (e.target.value)} value={newComment}></textarea>
-                        <li onClick={createComment} id="create-comment" className="active-btn">ajouter un commentaire</li>
+                        <li onClick={createComment} id="create-comment" className="name">ajouter un commentaire</li>
                     </form>
                 </div>
                 {postUserId === userId || admin == 1 ? (

@@ -81,10 +81,10 @@ const Home = () => {
         <main>
             <section>
 
-                <div search-bar>
+                <div className=' search-bar'>
                     <input type="text" name="search-bar" id='search-bar' placeholder="recherche" onChange={(e) => setSearch
                         (e.target.value)} value={search}></input>
-                    <li onClick={searchUser} id="searchUser" className="active-btn">rechercher</li>
+                    <li onClick={searchUser} id="searchUser" className="name">rechercher</li>
                 </div>
                 <div home-container>
                     <Poster getAllPosts={getAllPosts} />

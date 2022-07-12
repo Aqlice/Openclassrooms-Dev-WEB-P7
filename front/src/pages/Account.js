@@ -4,6 +4,7 @@ import { NavLink, useLocation, useParams } from "react-router-dom";
 import ChangeProfil from '../components/changeProfil';
 import avatar from "../image/avatar.png"
 import Posts from '../components/Posts'
+import { useNavigate } from 'react-router-dom';
 
 
 const Account = () => {
@@ -16,6 +17,7 @@ const Account = () => {
 	const [imageProfile, setImageProfile] = useState('')
 	const [admin, setAdmin] = useState(0)
 	const [posts, setPosts] = useState([])
+	const navigate = useNavigate()
 
 
 	const [profilModal, setProfilModal] = useState(false);
@@ -90,6 +92,11 @@ const Account = () => {
 			.then((res) => {
 				if (res.data.error)
 					console.log(res.data.error)
+				else if (admin === 1) 
+					navigate("/home")
+				else
+					navigate("/login")
+
 			})
 			.catch((err) => {
 				console.log(err)
@@ -155,7 +162,8 @@ const Account = () => {
                             like={posts.total_like}
                             pic={posts.post_pic}
 							userPic={posts.pic}
-                            admin={admin}/>
+                            admin={admin}
+							getAllPosts={getPostsFromUser}/>
                     )
                     )}
                 </div>
