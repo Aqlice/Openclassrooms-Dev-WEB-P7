@@ -27,47 +27,56 @@ exports.createPostData = async (newPost, res, next) => {
 }
 
 exports.deletePostData = async (req, res, next) => {
-    const sql = `SELECT pic FROM post WHERE post.id = ?`
-    db.query(sql, req.params.id, async (err, result) => {
+    const sql = `SELECT post.pic, user_id, admin FROM post JOIN user ON UID = ? WHERE post.id = ?`
+    db.query(sql, [req.auth.userId, req.params.id], async (err, result) => {
         if (err)
             throw err
         else {
-            if (result[0] && result[0].pic !== null) {
-                const fileName = result[0].pic.split("images/")[1]
-                fs.unlink(`images/${fileName}`, () => {
-                    if (err)
-                        throw err
-                    else {
-                        const sql = `DELETE FROM post WHERE post.id = ?`
-                        db.query(sql, req.params.id, async (err, result) => {
-                            if (err)
-                                throw err
-                            else
-                                return res.status(200).json(result)
-                        })
-                    }
-                })
-            }
-            else {
-                const sql = `DELETE FROM post WHERE post.id = ?`
-                db.query(sql, req.params.id, async (err, result) => {
-                    if (err)
-                        throw err
-                    else
-                        return res.status(200).json(result)
-                })
+            if (req.auth.userId == result[0].user_id || result[0].admin == 1) {
+                if (result[0] && result[0].pic !== null) {
+                    const fileName = result[0].pic.split("images/")[1]
+                    fs.unlink(`images/${fileName}`, () => {
+                        if (err)
+                            throw err
+                        else {
+                            const sql = `DELETE FROM post WHERE post.id = ?`
+                            db.query(sql, req.params.id, async (err, result) => {
+                                if (err)
+                                    throw err
+                                else
+                                    return res.status(200).json(result)
+                            })
+                        }
+                    })
+                }
+                else {
+                    const sql = `DELETE FROM post WHERE post.id = ?`
+                    db.query(sql, req.params.id, async (err, result) => {
+                        if (err)
+                            throw err
+                        else
+                            return res.status(200).json(result)
+                    })
+                }
             }
         }
     })
 }
 
 exports.deleteComData = (req, res, next) => {
-    const sql = `DELETE FROM comments WHERE id = ?`
-    db.query(sql, req.params.id, async (err, result) => {
-        if (err)
-            throw err
+    const sqladmin = `SELECT admin, comments.user_id FROM user JOIN comments ON comments.id = ? WHERE UID = ?`
+    const sql = `DELETE FROM comments WHERE comments.id = ?`
+    db.query(sqladmin, [req.params.id, req.auth.userId], async (err, result) => {
+        if (result[0].admin == 1 || result[0].user_id == req.auth.userId) {
+            db.query(sql, req.params.id, async (err, result) => {
+                if (err)
+                    throw err
+                else
+                    return res.status(200).json(result)
+            })
+        }
         else
-            return res.status(200).json(result)
+            return res.status(400).json({ error: 'non autorisé' })
     })
 }
 
@@ -143,28 +152,35 @@ exports.modifyPostData = async (req, res, next) => {
     if (req.body.message) {
         updated = { ...updated, message: req.body.message }
     }
-    if (req.file) {
-        updated = { ...updated, pic: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` }
-        const sql = `SELECT pic FROM post WHERE post.id = ?`
-        db.query(sql, req.params.id, async (err, result) => {
-            if (err)
-                throw err
-            else {
-                if (result[0].pic !== null) {
-                    const fileName = result[0].pic.split("images/")[1]
-                    fs.unlink(`images/${fileName}`, () => {
-                        if (err)
-                            throw err
-                    })
-                }
+    const sqladmin = `SELECT post.user_id, admin FROM user JOIN post ON post.id = ? WHERE UID = ?`
+    db.query(sqladmin, [req.params.id, req.auth.userId], async (err, result) => {
+        if (result[0].user_id == req.auth.userId || result[0].admin == 1) {
+            if (req.file) {
+                updated = { ...updated, pic: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` }
+                const sql = `SELECT pic FROM post WHERE post.id = ?`
+                db.query(sql, req.params.id, async (err, result) => {
+                    if (err)
+                        throw err
+                    else {
+                        if (result[0].pic !== null) {
+                            const fileName = result[0].pic.split("images/")[1]
+                            fs.unlink(`images/${fileName}`, () => {
+                                if (err)
+                                    throw err
+                            })
+                        }
+                    }
+                })
             }
-        })
-    }
-    const sql = `UPDATE post SET ? WHERE ID=?`
-    db.query(sql, [updated, req.params.id], async (err, result) => {
-        if (err)
-            throw err
+            const sql = `UPDATE post SET ? WHERE ID=?`
+            db.query(sql, [updated, req.params.id], async (err, result) => {
+                if (err)
+                    throw err
+                else
+                    res.status(200).json(result)
+            })
+        }
         else
-            res.status(200).json(result)
+            return res.status(400).json({ error: 'non autorisé' })
     })
 }

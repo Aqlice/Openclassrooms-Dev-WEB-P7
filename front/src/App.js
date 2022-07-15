@@ -11,17 +11,17 @@ import UserSearch from "./pages/UserSearch"
 
 
 function App() {
-  console.log("app")
   return (
       <div className="Router">
         <BrowserRouter>
           <Navbar />
           <Routes>
            
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/account/:id" element={<Account />} />
             <Route path="/UserSearch/:id" element={<UserSearch />}/>
+            <Route path="/UserSearch" element={<UserSearch />}/>
            
           </Routes>
         </BrowserRouter>

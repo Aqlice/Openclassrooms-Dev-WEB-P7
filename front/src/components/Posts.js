@@ -17,8 +17,6 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
     const [likes, setLikes] = useState(false)
     const [postModal, setPostModal] = useState(false)
 
-    console.log(admin)
-
     const handlePost = (e) => {
         setPostModal(true)
     }
@@ -53,7 +51,6 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
         })
             .then((res) => {
                 if (res.data) {
-                    console.log("test", res.data)
                     setComments(res.data)
                 }
                 else
@@ -80,7 +77,6 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
                 authorization: `Bearer ${token}`
             },
         }).then((res) => {
-            console.log(res);
             setNewComment(res.data.comment)
             if (res.data.error) {
                 console.log("la", res.data.errors)

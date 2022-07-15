@@ -6,15 +6,14 @@ import UserResult from '../components/UserResult'
 
 
 const UserSearch = () => {
-    console.log("test")
     const [result, setResult] = useState([])
+    const [noResult, setNoResult] = useState(0)
     useEffect(() => {
 		userSearcher()
 	}, [])
     const userSearcher = async () => {
         const token = JSON.parse(localStorage.token)
         let id = document.URL.replace('http://localhost:3000/UserSearch/', '')
-        console.log("test", id)
         axios.get(`${process.env.REACT_APP_API_URL}api/auth/`, {
             params: {
                 user: id
@@ -27,23 +26,24 @@ const UserSearch = () => {
                 console.log("ici", res.data.errors)
 
             }
-            else {
+            else 
                 setResult(res.data)
-                console.log('res', res.data)
-            }
         })
             .catch((err) => {
+                setNoResult(1)
                 console.log(err);
             });
     }
     return (
+        <>
+        {noResult == 0? (
         <div className="result-list">
             <div className="result-container">
                 <div>
                 {result.map(result =>
                     (
                         <UserResult
-                            key={result.id}
+                            key={result.UID}
                             fname={result.fname}
                             name={result.name}
                             mail={result.mail}
@@ -54,7 +54,9 @@ const UserSearch = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </div>) 
+        : (<p>utilisateur non trouvé</p>)}
+        </>
     )
 }
 

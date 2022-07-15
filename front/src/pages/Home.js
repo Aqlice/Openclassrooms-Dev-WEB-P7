@@ -81,14 +81,14 @@ const Home = () => {
                         (e.target.value)} value={search}></input>
                     <li onClick={searchUser} id="searchUser" className="name">rechercher</li>
                 </div>
-                <div home-container>
+                <div className='home-container'>
                     <Poster getAllPosts={getAllPosts} />
                 </div>
                 <div className='post-container'>
                     {posts.map(posts =>
                     (
                         <Posts
-                            key={posts.id}
+                            key={posts.post_id}
                             fname={posts.post_user_name}
                             message={posts.message}
                             postUserId={posts.post_user_id}

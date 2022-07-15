@@ -99,11 +99,11 @@ exports.modifyUserData = (req, res, next) => {
         mail: req.body.mail,
     }
     if (req.file) {
-        const sql = `SELECT pic FROM user WHERE UID=?`
+        const sql = `SELECT pic, UID, admin FROM user WHERE UID=?`
         db.query(sql, req.params.id, async (err, result) => {
             if (err)
                 throw err
-            else {
+            else if (result[0].admin == 1 || result[0].UID == req.auth.userId) {
                 const oldFileName = result[0].pic.split("images/")[1]
                 if (oldFileName !== "avatar.png") {
                     fs.unlink(`images/${oldFileName}`, () => {
@@ -120,6 +120,8 @@ exports.modifyUserData = (req, res, next) => {
                         res.status(200).json(result)
                 })
             }
+            else
+                return res.status(400).json({ error: 'non autorisé' })
         })
     }
 }
@@ -129,8 +131,7 @@ exports.deleteUserData = (req, res, next) => {
     db.query(sql, req.params.id, async (err, result) => {
         if (err)
             throw err
-            
-        else {
+        else if (result[0].admin == 1 || result[0].UID == req.auth.userId) {
             const oldFileName = result[0].pic.split("images/")[1]
             if (oldFileName !== "avatar.png") {
                 fs.unlink(`images/${oldFileName}`, () => {
@@ -138,13 +139,15 @@ exports.deleteUserData = (req, res, next) => {
                         throw err
                 })
             }
+            const sql = `DELETE FROM user WHERE user.UID=?`
+            db.query(sql, req.params.id, async (err, result) => {
+                if (err)
+                    throw err
+                else
+                    res.status(200).json(result)
+            })
         }
-        const sql = `DELETE FROM user WHERE user.UID=?`
-        db.query(sql, req.params.id, async (err, result) => {
-            if (err)
-                throw err
-            else
-                res.status(200).json(result)
-        })
+        else
+            return res.status(400).json({ error: 'non autorisé' })
     })
 }

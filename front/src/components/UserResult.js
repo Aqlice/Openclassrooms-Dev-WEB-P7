@@ -11,7 +11,6 @@ function UserResult({ fname, name, mail, pic, UID }) {
 
     const userId = JSON.parse(localStorage.userId)
     const token = JSON.parse(localStorage.token)
-    console.log(UID)
     return (
         <div className='user-presentation' id="showProfil2">
             <div className='image-container'>

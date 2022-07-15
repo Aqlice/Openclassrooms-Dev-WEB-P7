@@ -95,7 +95,7 @@ const Account = () => {
 				else if (admin === 1) 
 					navigate("/home")
 				else
-					navigate("/login")
+					navigate("/")
 
 			})
 			.catch((err) => {
@@ -150,7 +150,7 @@ const Account = () => {
                     {posts.map(posts =>
                     (
                         <Posts
-                            key={posts.id}
+                            key={posts.post_id}
                             fname={posts.post_user_name}
                             message={posts.message}
                             postUserId={posts.post_user_id}

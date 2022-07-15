@@ -2,7 +2,7 @@ import React from 'react';
 
 function Logout() {
     localStorage.clear();
-    window.location = "/login"
+    window.location = "/"
     return(
         <li></li>
   );

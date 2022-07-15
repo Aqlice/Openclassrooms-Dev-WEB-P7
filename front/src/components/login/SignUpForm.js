@@ -36,7 +36,7 @@ const SignUpForm = () => {
                 passwordError.innerHTML = res.data.errors.password;
               } else {
                 console.log(localStorage)
-                window.location = "/login"
+                window.location = "/"
               }
             })
             .catch((err) => console.log(err));

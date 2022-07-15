@@ -29,7 +29,6 @@ function Poster({ getAllPosts }) {
                 authorization: `Bearer ${token}`
             }
         }).then((res) => {
-            console.log(res);
             setname(res.data.name);
             setfname(res.data.fname);
             setImageProfile(res.data.pic)
@@ -52,8 +51,6 @@ function Poster({ getAllPosts }) {
         form.append('message', message)
         if (postPic[0])
             form.append('image', postPic[0])
-        console.log("dewfdw", userId)
-        console.log(form.get('user_id'))
         axios
             .post(`${process.env.REACT_APP_API_URL}api/posts/ `, form, {
                 headers: {
@@ -61,19 +58,10 @@ function Poster({ getAllPosts }) {
                     "Content-Type": "multipart/form-data",
                 },
             })
-        /*axios({
-            method: "POST",
-            url: `${process.env.REACT_APP_API_URL}api/posts/ `,
-            form,
-            headers: {
-                authorization: `Bearer ${token}`,
-                "Content-Type": "multipart/form-data"
-            }
-        })*/
         .then((res) => {
-            console.log(res);
             setMessage(res.data.message)
             getAllPosts()
+            window.location.reload(false)
             if (res.data.error) {
                 console.log("la", res.data.errors)
 
@@ -95,7 +83,7 @@ function Poster({ getAllPosts }) {
                     <textarea type="text" name="post" id='post' placeholder="Que souhaitez vous partager" onChange={(e) => setMessage
                         (e.target.value)} value={message}></textarea>
                     <input type="file" name="post-picture" id='post-picture' className='input-file' onChange={(e) => setPostPic(e.target.files)} filename={postPic}></input>
-                   <label for="post-picture">Choisir un fichier</label>
+                   <label htmlFor="post-picture">Choisir un fichier</label>
                     <li onClick={createPost} id="create-post" className="active-btn">Poster</li>
                 </form>
             </div>

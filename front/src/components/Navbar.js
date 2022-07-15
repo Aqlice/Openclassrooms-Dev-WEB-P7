@@ -27,7 +27,7 @@ function Navbar() {
                             </NavLink>
                         </li>
                         <li onClick={Logout}>
-                            <NavLink to="/login">
+                            <NavLink to="/">
                                 <img src={arrow} alt='img log out' />
                             </NavLink>
                         </li>
