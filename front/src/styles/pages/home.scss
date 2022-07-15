@@ -2,19 +2,25 @@ $Primary : #fd2d01;
 $Secondary: #ffd7d7;
 $Third: #a5a6aa;
 .logo {
+    //background-color: aquamarine;
     display: flex;
     align-items: center;
+    width: 12rem;
+    
     img {
-        width: 12rem;
-        height: 12rem;
+        width: 11rem;
+        height: auto;
+        margin-left: 2%;
+       
 
     }
 }
 
-.home-container {
+.home{
+  //  background-color: aqua;
     display: flex;
-    justify-content: flex-start;
-    margin-top: 1000px;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
-
 

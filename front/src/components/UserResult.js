@@ -19,9 +19,11 @@ function UserResult({ fname, name, mail, pic, UID }) {
                     <img src={pic} id="image" alt="image" />
                 </NavLink>
             </div>
+            <div id='user-info'>
             <p> nom: {name}</p>
             <p> Prenom: {fname}</p>
             <p>Contact: {mail}</p>
+            </div>
         </div>
     )
 }

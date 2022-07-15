@@ -9,7 +9,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-left: 8%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -22,7 +21,6 @@
 }
 
 .post-container .post-container {
-  margin: 2rem;
   background-color: white;
   padding: 1rem;
   width: 80%;
@@ -93,6 +91,7 @@
 
 #poster-name {
   margin-bottom: 1.5rem;
+  color: #696767;
 }
 
 #icon-comment {
@@ -136,6 +135,66 @@
 
 .like-comment-ligne p:hover {
   cursor: pointer;
+}
+
+#handlepost, #create-comment {
+  font-size: 0.8rem;
+}
+
+#post-change-form {
+  border-top: solid 1px #fd2d01;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 12rem;
+  margin-top: 0.5rem;
+}
+
+#post-change-form textarea {
+  width: 90%;
+}
+
+#post-change-form input {
+  margin-top: 0.5rem;
+  background-color: white;
+}
+
+#post-change-form #post-picture {
+  border-radius: 5px;
+  height: 1.25rem;
+  border: 1px solid #a5a6aa;
+}
+
+#change-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 12rem;
+  padding: 0.3rem;
+  border: 1px solid #a5a6aa;
+  border-radius: 20px;
+  -webkit-box-shadow: 5px 5px 15px 5px #a5a6aa;
+          box-shadow: 5px 5px 15px 5px #a5a6aa;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+#change-post:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 /*#delete-post{

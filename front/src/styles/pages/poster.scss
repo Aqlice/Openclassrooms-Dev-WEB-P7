@@ -8,9 +8,10 @@ $Third: #a5a6aa;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    gap:15%;
     padding-left:2%;
     align-items: center;
-    margin-left: 10%;
+    margin-left: 9%;
     background-color: $Third;
     height: 250px;
     border-radius: 15px;
@@ -45,7 +46,7 @@ $Third: #a5a6aa;
     margin-top: 4%;
     &:hover{
 
-        box-shadow: 5px 5px 15px 5px black;
+        box-shadow: 5px 5px 15px 5px rgb(243, 216, 216);
        // background-color: #fd2d01;
     }
     //margin-left:50px ;

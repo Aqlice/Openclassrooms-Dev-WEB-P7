@@ -40,11 +40,8 @@ const Home = () => {
         }).then((res) => {
             setPosts(res.data)
             setTotalItems(res.data.length)
-            console.log("ca marche ou pas", res.data)
-            if (res.data.error) {
+            if (res.data.error)
                 console.log(res.data.errors)
-
-            }
         })
             .catch((err) => {
                 console.log(err)
@@ -62,10 +59,8 @@ const Home = () => {
             }
         }).then((res) => {
             setAdmin(res.data.admin)
-            if (res.data.error) {
-                console.log("ici", res.data.errors)
-
-            }
+            if (res.data.error) 
+                console.log(res.data.errors)
         })
             .catch((err) => {
                 console.log(err);
@@ -79,7 +74,7 @@ const Home = () => {
 
     return (
         <main>
-            <section>
+            <div className='home'>
 
                 <div className=' search-bar'>
                     <input type="text" name="search-bar" id='search-bar' placeholder="recherche" onChange={(e) => setSearch
@@ -107,7 +102,7 @@ const Home = () => {
                     )
                     )}
                 </div>
-            </section>
+            </div>
         </main>
     )
 }

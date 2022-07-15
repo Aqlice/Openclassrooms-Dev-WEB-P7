@@ -14,10 +14,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: auto;
-  width: auto;
-  background-color: #fd2d01;
   border-radius: 20px;
-  padding: 1rem;
   border: #fd2d01 2px solid;
 }
 
@@ -36,6 +33,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  margin: 0.5rem;
 }
 
 ul {
@@ -94,12 +92,15 @@ ul li {
 .active-btn:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+  -webkit-box-shadow: 5px 5px 15px 5px #a5a6aa;
+          box-shadow: 5px 5px 15px 5px #a5a6aa;
 }
 
 li:not(.active-btn):hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-  background: #fd2d01;
+  -webkit-box-shadow: 5px 5px 15px 5px #a5a6aa;
+          box-shadow: 5px 5px 15px 5px #a5a6aa;
 }
 
 input {
@@ -107,15 +108,14 @@ input {
   height: 2rem;
   width: 12rem;
   border-radius: 20px;
-  border: #fd2d01 2px solid;
+  border: #fd2d01 1px solid;
 }
 
 input[type="submit"] {
-  background: #fd2d01;
   margin-right: 14px;
   height: 2.5rem;
   width: 12.5rem;
-  border: #fd2d01 2px solid;
+  border: #a5a6aa 1px solid;
   cursor: pointer;
   -webkit-transition: 0.2s;
   transition: 0.2s;
@@ -125,8 +125,10 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: 5px 5px 15px 5px #a5a6aa;
+          box-shadow: 5px 5px 15px 5px #a5a6aa;
 }
 
 @media screen and (min-width: 768px) {

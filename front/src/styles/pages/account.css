@@ -1,3 +1,12 @@
+#account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .account-container {
   border: 2px solid #fd2d01;
   display: -webkit-box;
@@ -13,16 +22,10 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1rem;
+  padding: 0.5rem;
   height: auto;
   width: 80%;
-  justify-self: center;
-  margin-left: 6%;
   border-radius: 20px;
-  /* #changeProfil {
-        display: flex;
-        background-color: blue;
-    }*/
 }
 
 .account-container form {
@@ -38,7 +41,8 @@
   width: 5rem;
 }
 
-.account-container #showProfil, .account-container #change-profil {
+.account-container #showProfil,
+.account-container #change-profil {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,7 +61,8 @@
   background-color: white;
 }
 
-.account-container #showProfil:hover, .account-container #change-profil:hover {
+.account-container #showProfil:hover,
+.account-container #change-profil:hover {
   cursor: pointer;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
@@ -77,6 +82,12 @@
   border-radius: 15px;
 }
 
+.account-container #profile-picture {
+  border: 1px solid #a5a6aa;
+  border-radius: 5px;
+  height: 1.25rem;
+}
+
 .account-container #change-profil {
   height: 2.2rem;
   margin-top: 20px;
@@ -85,7 +96,39 @@
   border: none;
 }
 
-.account-container #change-profil li {
-  background-color: blue;
+/* -------------- UserSearch ----------- */
+#showProfil2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-left: 5%;
+  border-radius: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem;
+  border: 2px solid #fd2d01;
+  width: 85%;
+}
+
+#showProfil2 #user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#showProfil2 .image-container img {
+  width: 6rem;
+  border-radius: 15px;
+  margin-right: 0.5rem;
 }
 /*# sourceMappingURL=account.css.map */

@@ -38,7 +38,7 @@ const Account = () => {
 				authorization: `Bearer ${token}`
 			}
 		}).then((res) => {
-			console.log(res);
+			//console.log(res);
 			if (res.data.name)
 				setname(res.data.name);
 			if (res.data.fname)
@@ -110,18 +110,14 @@ const Account = () => {
                 authorization: `Bearer ${token}`
             }
         }).then((res) => {
-            if (res.data.error) {
-                console.log("ici", res.data.errors)
-
-            }
-            else {
-				console.log(res.data)
+            if (res.data.error) 
+                console.log(res.data.errors)
+            else 
                 setPosts(res.data)
-            }
 	})}
 
 	return (
-		<section>
+		<div id="account">
 			<div className='account-container'>
 				<div className='image-container'>
 					<img src={imageProfile} id="image" alt="image" />
@@ -149,6 +145,7 @@ const Account = () => {
 					</div>
 				)}
 				<li onClick={getPostsFromUser} id="getPostsFromUser" className="active-btn">afficher les posts</li>
+				
 				<div className='post-container'>
                     {posts.map(posts =>
                     (
@@ -169,7 +166,8 @@ const Account = () => {
                 </div>
 
 			</div>
-		</section>
+			</div>
+		
 	)
 }
 

@@ -140,23 +140,21 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
         <>
             <div className="post-container">
                 <div className='post-user-pic'>
-                <li onClick={getUser} id="poster-name" className="name">posté par {fname} </li>
-                <img src={userPic} id="user-pic"></img>
+                    <li onClick={getUser} id="poster-name" className="name">posté par {fname} </li>
+                    <img src={userPic} id="user-pic"></img>
                 </div>
                 {pic ? (
                     <img src={pic} />)
                     : ('')}
                 <p>{message}</p>
-                    <div id="sepatation-line"></div>
+                <div id="sepatation-line"></div>
                 <div className="like-comment-ligne">
                     <li onClick={addLike}>
                         <img src={heart} id="heart" />
                         <p id="like"> {like}</p>
                     </li>
-                    {postUserId === userId || admin === 1 ? (
-                        <li onClick={handlePost} id="handlepost" className="name">Modifier post</li>)
-                        : ("")}
-                    {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}
+                    
+                    
                     <li onClick={getComments} id="getComments"><img src={commentIcon} id="icon-comment" /><p>Afficher</p></li>
                 </div>
                 <div className="comment-container" >
@@ -180,6 +178,12 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
                         <li onClick={createComment} id="create-comment" className="name">ajouter un commentaire</li>
                     </form>
                 </div>
+                {postUserId === userId || admin === 1 ? (
+                        <li onClick={handlePost} id="handlepost" className="name">Modifier ce post</li>)
+                        : ("")}
+                    
+                        {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}
+
                 {postUserId === userId || admin == 1 ? (
                     <li onClick={deletePost} id="delete-post" className="active-btn">supprimer</li>)
                     : ("")

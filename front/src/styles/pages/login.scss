@@ -11,19 +11,21 @@ body{
   flex-direction:row;
   justify-content: space-between;
   height: auto;
-  width: auto;
-  background-color:$Primary;
+  //background-color:$Primary;
   border-radius: 20px;
-  padding: 1rem;
+ // padding: 1rem;
   border: $Primary 2px solid;
  
 }
 .form-container{
+  //background-color: lightcoral;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+  margin: 0.5rem;
+
 }
 ul {
   display: flex;
@@ -61,6 +63,7 @@ ul {
   cursor: pointer;
   &:hover{
     transform: scale(1.1);
+    box-shadow: 5px 5px 15px 5px $Third;
     //border:$Primary 1px solid;
     
   }
@@ -70,7 +73,8 @@ ul {
 li:not(.active-btn) {
   &:hover {
 	transform: scale(1.1);
-	background: $Primary;
+	//background: $Primary;
+  box-shadow: 5px 5px 15px 5px $Third;
   }
 }
 
@@ -82,22 +86,24 @@ input{
 	height: 2rem;
 	width: 12rem;
 	border-radius: 20px;
-	border: $Primary 2px solid;
+	border: $Primary 1px solid;
 }
 
 input[type="submit"] {
-	background: $Primary;
+	//background: $Primary;
   margin-right: 14px;
 	height: 2.5rem;
 	width: 12.5rem;
-	border: $Primary 2px solid;
+	border: $Third 1px solid;
 	cursor: pointer;
 	transition: 0.2s;
 	padding: 10px 20px;
 	font-size: 1rem;
 	border-radius: 20px;
 	&:hover{
-		transform: scale(1.1);
+		transform: scale(1.04);
+    box-shadow: 5px 5px 15px 5px $Third;
+
 	}
   }
 

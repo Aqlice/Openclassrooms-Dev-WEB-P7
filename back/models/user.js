@@ -125,10 +125,11 @@ exports.modifyUserData = (req, res, next) => {
 }
 
 exports.deleteUserData = (req, res, next) => {
-    const sql = `SELECT pic FROM user WHERE UID=?`
+    const sql = `SELECT pic, UID, admin FROM user WHERE UID=?`
     db.query(sql, req.params.id, async (err, result) => {
         if (err)
             throw err
+            
         else {
             const oldFileName = result[0].pic.split("images/")[1]
             if (oldFileName !== "avatar.png") {

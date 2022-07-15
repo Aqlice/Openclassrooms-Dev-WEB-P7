@@ -26,13 +26,13 @@ exports.createPostData = async (newPost, res, next) => {
     })
 }
 
-exports.deletePostData = (req, res, next) => {
+exports.deletePostData = async (req, res, next) => {
     const sql = `SELECT pic FROM post WHERE post.id = ?`
     db.query(sql, req.params.id, async (err, result) => {
         if (err)
             throw err
         else {
-            if (result[0].pic !== null) {
+            if (result[0] && result[0].pic !== null) {
                 const fileName = result[0].pic.split("images/")[1]
                 fs.unlink(`images/${fileName}`, () => {
                     if (err)
@@ -137,22 +137,21 @@ exports.addLikeData = (req, res, next) => {
 
 exports.modifyPostData = async (req, res, next) => {
 
+    if (!req.body.message && !req.file)
+        return res.status(400).json({ error: "error" })
     let updated = {}
     if (req.body.message) {
         updated = { ...updated, message: req.body.message }
     }
     if (req.file) {
         updated = { ...updated, pic: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` }
-        console.log("req id", req.params.id)
         const sql = `SELECT pic FROM post WHERE post.id = ?`
         db.query(sql, req.params.id, async (err, result) => {
             if (err)
                 throw err
             else {
-                console.log(result[0].pic)
                 if (result[0].pic !== null) {
                     const fileName = result[0].pic.split("images/")[1]
-                    console.log(fileName)
                     fs.unlink(`images/${fileName}`, () => {
                         if (err)
                             throw err
