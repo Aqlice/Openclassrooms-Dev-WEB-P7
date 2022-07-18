@@ -1,33 +1,30 @@
 $Primary : #fd2d01;
 $Secondary: #ffd7d7;
 $Third: #a5a6aa;
+
 .logo {
-    //background-color: aquamarine;
     display: flex;
     align-items: center;
     width: 12rem;
-    
+
     img {
         width: 11rem;
         height: auto;
         margin-left: 2%;
-       
-
     }
 }
 
-.home{
-  //  background-color: aqua;
+.home {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
 }
 
-.name{
-    background-color:white;
-    &:hover{
+.name {
+    background-color: white;
+
+    &:hover {
         box-shadow: none;
     }
-
 }

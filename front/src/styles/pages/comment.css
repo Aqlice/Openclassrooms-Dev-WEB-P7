@@ -27,7 +27,14 @@
   padding: 5px;
 }
 
-#getPostsFromUser, #deleteProfil, #showProfil, #delete-com, #create-comment, #delete-post, .name, #searchUser {
+#getPostsFromUser,
+#deleteProfil,
+#showProfil,
+#delete-com,
+#create-comment,
+#delete-post,
+.name,
+#searchUser {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,7 +51,14 @@
   border: none;
 }
 
-#getPostsFromUser:hover, #deleteProfil:hover, #showProfil:hover, #delete-com:hover, #create-comment:hover, #delete-post:hover, .name:hover, #searchUser:hover {
+#getPostsFromUser:hover,
+#deleteProfil:hover,
+#showProfil:hover,
+#delete-com:hover,
+#create-comment:hover,
+#delete-post:hover,
+.name:hover,
+#searchUser:hover {
   -webkit-transform: scale(1.035);
           transform: scale(1.035);
   cursor: pointer;
@@ -53,7 +67,8 @@
   border-bottom: 1px solid #fd2d01;
 }
 
-#delete-com, #delete-post {
+#delete-com,
+#delete-post {
   -ms-flex-item-align: end;
       align-self: flex-end;
   justify-self: flex-end;
@@ -66,17 +81,6 @@
   font-size: 1rem;
   width: 11rem;
   margin-bottom: 1rem;
-}
-
-#showProfil {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid #a5a6aa;
-  margin-bottom: 0.5rem;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-  margin-left: 0.5rem;
 }
 
 .search-bar {

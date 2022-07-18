@@ -1,63 +1,46 @@
-
 $Primary : #fd2d01;
 $Secondary: #ffd7d7;
 $Third: #a5a6aa;
 
-*{margin: 0px;
+* {
+    margin: 0px;
 }
 
-.nav-container{
-    
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-   // background-color: $Primary;
-   background: rgb(253,45,0);
-background: linear-gradient(90deg, rgba(253,45,0,1) 0%, rgba(255,215,215,1) 97%);
+    background: rgb(253, 45, 0);
+    background: linear-gradient(90deg, rgba(253, 45, 0, 1) 0%, rgba(255, 215, 215, 1) 97%);
     height: 12rem;
     width: 100%;
     margin-bottom: 3rem;
-    
-   /* h5{                           enlever le H% du navlink.js
-        color: black;
-        font-size: 2rem;
-        margin-right: 10%;
-    }*/
-    .icon-link{
-        //background-color: blue;
-     // width: 10%;
-     height: 11rem;
+
+    .icon-link {
+        height: 11rem;
         display: flex;
         flex-direction: row;
-        
-        li{
-           
+
+        li {
             padding-right: 1rem;
-            &:hover{
+
+            &:hover {
                 transform: scale(1.06);
                 box-shadow: none;
-                
             }
         }
-       
-     
-        
     }
-    img{
-       // background-color: aliceblue;
-       height: 1.3rem;
+
+    img {
+        height: 1.3rem;
         width: 1.3rem;
-        
     }
-    
 }
 
-
-@media screen and (min-width: 1020px){
-    .icon-link{
-        img{
-           // background-color: aliceblue;
+@media screen and (min-width: 1020px) {
+    .icon-link {
+        img {
             height: 1.8rem;
             width: 1.8rem;
         }

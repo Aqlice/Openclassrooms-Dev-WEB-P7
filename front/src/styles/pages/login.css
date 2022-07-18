@@ -85,7 +85,8 @@ ul {
   width: 98%;
 }
 
-#login, #sign-up {
+#login,
+#sign-up {
   list-style: none;
   width: auto;
   margin-left: 0px;

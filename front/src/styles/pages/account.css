@@ -22,10 +22,13 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   padding: 0.5rem;
   height: auto;
   width: 80%;
   border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .account-container form {
@@ -41,7 +44,6 @@
   width: 5rem;
 }
 
-.account-container #showProfil,
 .account-container #change-profil {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -61,7 +63,6 @@
   background-color: white;
 }
 
-.account-container #showProfil:hover,
 .account-container #change-profil:hover {
   cursor: pointer;
   -webkit-transform: scale(1.04);
@@ -94,6 +95,18 @@
   margin-bottom: 20px;
   width: 11rem;
   border: none;
+}
+
+.account-container #deleteProfil {
+  width: 4rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.account-container #showProfil {
+  width: 3.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
 }
 
 /* -------------- UserSearch ----------- */
@@ -130,5 +143,30 @@
   width: 6rem;
   border-radius: 15px;
   margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 745px) {
+  .account-container {
+    width: 60%;
+  }
+  #showProfil2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-self: center;
+    margin-left: 20%;
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 745px) {
+  #showProfil2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-self: center;
+    margin-left: 32%;
+    width: 35%;
+  }
 }
 /*# sourceMappingURL=account.css.map */
