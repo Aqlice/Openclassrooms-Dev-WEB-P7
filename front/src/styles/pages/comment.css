@@ -27,7 +27,7 @@
   padding: 5px;
 }
 
-#showProfil, #delete-com, #create-comment, #delete-post, .name, #searchUser {
+#getPostsFromUser, #deleteProfil, #showProfil, #delete-com, #create-comment, #delete-post, .name, #searchUser {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,10 +44,12 @@
   border: none;
 }
 
-#showProfil:hover, #delete-com:hover, #create-comment:hover, #delete-post:hover, .name:hover, #searchUser:hover {
+#getPostsFromUser:hover, #deleteProfil:hover, #showProfil:hover, #delete-com:hover, #create-comment:hover, #delete-post:hover, .name:hover, #searchUser:hover {
   -webkit-transform: scale(1.035);
           transform: scale(1.035);
   cursor: pointer;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-bottom: 1px solid #fd2d01;
 }
 
@@ -66,10 +68,6 @@
   margin-bottom: 1rem;
 }
 
-#create-comment:hover {
-  background-color: white;
-}
-
 #showProfil {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -82,8 +80,8 @@
 }
 
 .search-bar {
-  background-color: red;
   height: 3rem;
+  width: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,8 +93,7 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   gap: 2%;
-  margin-right: 8%;
-  background-color: white;
+  margin-left: 3rem;
 }
 
 #searchUser {

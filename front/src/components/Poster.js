@@ -71,7 +71,7 @@ function Poster({ getAllPosts }) {
 
 
     return (
-        <section>
+        <section className='all-poster-container'>
             <div className='poster-container'>
                 <img src={imageProfile} id="profileImage" alt="avatar"></img>
                 <form>

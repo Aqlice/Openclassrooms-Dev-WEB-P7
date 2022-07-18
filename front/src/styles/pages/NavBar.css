@@ -16,8 +16,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #fd2d01;
-  height: 10rem;
+  background: #fd2d00;
+  background: -webkit-gradient(linear, left top, right top, from(#fd2d00), color-stop(97%, #ffd7d7));
+  background: linear-gradient(90deg, #fd2d00 0%, #ffd7d7 97%);
+  height: 12rem;
   width: 100%;
   margin-bottom: 3rem;
   /* h5{                           enlever le H% du navlink.js
@@ -28,7 +30,7 @@
 }
 
 .nav-container .icon-link {
-  background-color: #fd2d01;
+  height: 11rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,12 +40,26 @@
           flex-direction: row;
 }
 
+.nav-container .icon-link li {
+  padding-right: 1rem;
+}
+
+.nav-container .icon-link li:hover {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .nav-container img {
   height: 1.3rem;
   width: 1.3rem;
 }
 
-.nav-container .nav-logo {
-  background-color: blue;
+@media screen and (min-width: 1020px) {
+  .icon-link img {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
 }
 /*# sourceMappingURL=NavBar.css.map */

@@ -46,7 +46,8 @@
 }
 
 .post-container li:hover {
-  background-color: white;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .post-container textarea {
@@ -101,7 +102,6 @@
 }
 
 #icon-comment:hover {
-  background-color: white;
   cursor: pointer;
 }
 
@@ -141,6 +141,11 @@
   font-size: 0.8rem;
 }
 
+#handlepost:hover, #create-comment:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 #post-change-form {
   border-top: solid 1px #fd2d01;
   display: -webkit-box;
@@ -162,7 +167,6 @@
 
 #post-change-form input {
   margin-top: 0.5rem;
-  background-color: white;
 }
 
 #post-change-form #post-picture {
@@ -188,13 +192,12 @@
   -webkit-box-shadow: 5px 5px 15px 5px #a5a6aa;
           box-shadow: 5px 5px 15px 5px #a5a6aa;
   margin-bottom: 10px;
-  background-color: white;
 }
 
 #change-post:hover {
   cursor: pointer;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
 }
 
 /*#delete-post{

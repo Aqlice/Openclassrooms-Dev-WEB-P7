@@ -37,8 +37,7 @@ $Third: #a5a6aa;
         align-items: center;
         gap: 10px;
         &:hover{
-            
-            background-color: white;
+            box-shadow: none;         
         }
         
     }
@@ -54,7 +53,7 @@ $Third: #a5a6aa;
         align-items: flex-end;
         gap: 5%;
 
-       // background-color: #fd2d01;
+       
         img{
             height: 5rem;
             border-radius: 15px;
@@ -73,7 +72,7 @@ $Third: #a5a6aa;
     &:hover{
        // transform: scale(1.05);
         cursor: pointer;
-      //  background-color: blue;
+       
 
     }
     
@@ -92,7 +91,7 @@ $Third: #a5a6aa;
 
     &:hover{
       
-        background-color: white;
+        //background-color: white;
         cursor: pointer;
     }
 }
@@ -126,6 +125,9 @@ $Third: #a5a6aa;
 
 #handlepost, #create-comment{
     font-size: 0.8rem;
+    &:hover{
+        box-shadow: none;
+    }
 }
 
 
@@ -142,7 +144,8 @@ $Third: #a5a6aa;
     
     input{
         margin-top: 0.5rem;
-        background-color: white;}
+        //background-color: white;
+    }
        
         #post-picture{
             border-radius: 5px;
@@ -163,11 +166,11 @@ $Third: #a5a6aa;
     border-radius: 20px;
     box-shadow: 5px 5px 15px 5px $Third;
     margin-bottom: 10px;
-    background-color: white;
+    //background-color: white;
 
     &:hover {
         cursor: pointer;
-        transform: scale(1.1);
+        transform: scale(1.04);
     }
 
 }

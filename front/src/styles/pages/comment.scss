@@ -28,7 +28,7 @@ $Third: #a5a6aa;
 
 }
 
-#showProfil , #delete-com, #create-comment,#delete-post,.name, #searchUser{
+#getPostsFromUser, #deleteProfil, #showProfil , #delete-com, #create-comment,#delete-post, .name,#searchUser{
     display: flex;
     align-items: center;
     align-self: center;
@@ -41,6 +41,7 @@ $Third: #a5a6aa;
         transform: scale(1.035);
         cursor: pointer;
         // background-color: rgb(225, 222, 222);
+        box-shadow: none;
          border-bottom:1px solid $Primary ;
 
 }
@@ -60,7 +61,7 @@ $Third: #a5a6aa;
     width: 11rem;
     margin-bottom: 1rem;
     &:hover{
-        background-color: white;
+        //background-color: white;
     }
 }
 
@@ -75,19 +76,22 @@ $Third: #a5a6aa;
   
 }
 .search-bar{
-    background-color: red;
+   // background-color: red;
     height: 3rem;
+    width: 70%;
     display: flex;
-   align-items: center;
+     align-items: center;
     justify-items: flex-start;
    justify-content: flex-end;
    gap: 2%;
-   margin-right: 8%;
-   background-color: white;
+   margin-left: 3rem;
+   //background-color: white;
    
 }
+
 #searchUser{
     font-size: 1rem;
+   
    &:hover{
     background-color: white;
     

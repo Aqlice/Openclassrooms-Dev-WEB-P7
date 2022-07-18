@@ -24,3 +24,10 @@ $Third: #a5a6aa;
     align-content: center;
 }
 
+.name{
+    background-color:white;
+    &:hover{
+        box-shadow: none;
+    }
+
+}

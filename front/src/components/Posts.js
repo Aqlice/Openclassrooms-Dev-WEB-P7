@@ -174,7 +174,7 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
                 {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}
 
                 {postUserId === userId || admin == 1 ? (
-                    <li onClick={deletePost} id="delete-post" className="active-btn">supprimer</li>)
+                    <li onClick={deletePost} id="delete-post" className="name">supprimer</li>)
                     : ("")
                 }
             </div>

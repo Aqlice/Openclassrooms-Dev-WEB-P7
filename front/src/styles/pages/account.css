@@ -64,8 +64,8 @@
 .account-container #showProfil:hover,
 .account-container #change-profil:hover {
   cursor: pointer;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
 }
 
 .account-container p {

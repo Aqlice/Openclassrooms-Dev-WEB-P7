@@ -129,7 +129,7 @@ const Account = () => {
 						<li onClick={handleProfil} id="showProfil" className="active-btn">Modifier</li>
 						{profilModal && <ChangeProfil />}
 						{(userId == id && admin != 1) || (admin == 1 && userId != id)? (
-							<li onClick={deleteProfil} id="deleteProfil" className="active-btn">Supprimer</li>)
+							<li onClick={deleteProfil} id="deleteProfil" className="name">Supprimer</li>)
 							: ("")}
 					</div>
 
@@ -142,7 +142,7 @@ const Account = () => {
 						<p>Contact: {mail}</p>
 					</div>
 				)}
-				<li onClick={getPostsFromUser} id="getPostsFromUser" className="active-btn">afficher les posts</li>
+				<li onClick={getPostsFromUser} id="getPostsFromUser" className="name">afficher les posts</li>
 
 				<div className='post-container'>
 					{posts.map(posts =>

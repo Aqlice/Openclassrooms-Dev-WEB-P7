@@ -12,8 +12,10 @@ $Third: #a5a6aa;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    background-color: $Primary;
-    height: 10rem;
+   // background-color: $Primary;
+   background: rgb(253,45,0);
+background: linear-gradient(90deg, rgba(253,45,0,1) 0%, rgba(255,215,215,1) 97%);
+    height: 12rem;
     width: 100%;
     margin-bottom: 3rem;
     
@@ -23,21 +25,41 @@ $Third: #a5a6aa;
         margin-right: 10%;
     }*/
     .icon-link{
-        background-color: $Primary;
+        //background-color: blue;
      // width: 10%;
+     height: 11rem;
         display: flex;
         flex-direction: row;
+        
+        li{
+           
+            padding-right: 1rem;
+            &:hover{
+                transform: scale(1.06);
+                box-shadow: none;
+                
+            }
+        }
        
      
         
     }
     img{
+       // background-color: aliceblue;
        height: 1.3rem;
         width: 1.3rem;
         
     }
-    .nav-logo {
-        background-color: blue;
-    }
+    
 }
 
+
+@media screen and (min-width: 1020px){
+    .icon-link{
+        img{
+           // background-color: aliceblue;
+            height: 1.8rem;
+            width: 1.8rem;
+        }
+    }
+}
