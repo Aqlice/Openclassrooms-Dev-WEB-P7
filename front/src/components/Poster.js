@@ -46,6 +46,9 @@ function Poster({ getAllPosts }) {
     };
 
     const createPost = (e) => {
+        console.log(message, postPic)
+        if (message.length == 0 && postPic.length == 0)
+            return
         const form = new FormData()
         form.append('user_id', userId)
         form.append('message', message)
@@ -58,19 +61,18 @@ function Poster({ getAllPosts }) {
                     "Content-Type": "multipart/form-data",
                 },
             })
-        .then((res) => {
-            setMessage(res.data.message)
-            getAllPosts()
-            window.location.reload(false)
-            if (res.data.error) {
-                console.log("la", res.data.errors)
+            .then((res) => {
+                setMessage(res.data.message)
+                getAllPosts()
+                //window.location.reload(false)
+                if (res.data.error) {
+                    console.log("la", res.data.errors)
 
-            }
-        })
+                }
+            })
             .catch((err) => {
                 console.log(err);
             });
-
 
     }
 
@@ -83,7 +85,7 @@ function Poster({ getAllPosts }) {
                     <textarea type="text" name="post" id='post' placeholder="Que souhaitez vous partager" onChange={(e) => setMessage
                         (e.target.value)} value={message}></textarea>
                     <input type="file" name="post-picture" id='post-picture' className='input-file' onChange={(e) => setPostPic(e.target.files)} filename={postPic}></input>
-                   <label htmlFor="post-picture">Choisir un fichier</label>
+                    <label htmlFor="post-picture">Choisir un fichier</label>
                     <li onClick={createPost} id="create-post" className="active-btn">Poster</li>
                 </form>
             </div>

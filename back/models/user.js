@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken")
 const crypto = require('crypto')
 const fs = require('fs');
 const dbc = require("../db")
-const { fstat } = require("fs")
 const db = dbc.getDB()
 
 
@@ -93,11 +92,16 @@ exports.searchUserData = (req, res, next) => {
 }
 
 exports.modifyUserData = (req, res, next) => {
-    let updated = {
-        name: req.body.name,
-        fname: req.body.fname,
-        mail: req.body.mail,
-    }
+    let updated = {}
+    if (req.body.name)
+        updated = { ...updated, name: req.body.name }
+    if (req.body.fname)
+        updated = { ...updated, fname: req.body.fname }
+    if (req.body.mail)
+        updated = { ...updated, mail: req.body.mail }
+
+    if (!req.body.mail && !req.body.name && !req.body.fname && !req.file)
+        return res.status(400).json({ error: 'non autorisé' })
     if (req.file) {
         const sql = `SELECT pic, UID, admin FROM user WHERE UID=?`
         db.query(sql, req.params.id, async (err, result) => {
@@ -124,14 +128,31 @@ exports.modifyUserData = (req, res, next) => {
                 return res.status(400).json({ error: 'non autorisé' })
         })
     }
+    else {
+        const sql = `UPDATE user SET ? WHERE UID=?`
+        db.query(sql, [updated, req.params.id], async (err, result) => {
+            if (err)
+                throw err
+            else
+                res.status(200).json(result)
+        })
+    }
 }
 
 exports.deleteUserData = (req, res, next) => {
     const sql = `SELECT pic, UID, admin FROM user WHERE UID=?`
+    const sqlAdmin = `SELECT admin FROM user WHERE UID =?`
+    let admin = 0
+    db.query(sqlAdmin, req.auth.userId, async (err, result) => {
+        if (err)
+            throw err
+        else 
+            admin = result[0].admin
+    })
     db.query(sql, req.params.id, async (err, result) => {
         if (err)
             throw err
-        else if (result[0].admin == 1 || result[0].UID == req.auth.userId) {
+        else if (admin == 1 || result[0].UID == req.auth.userId) {
             const oldFileName = result[0].pic.split("images/")[1]
             if (oldFileName !== "avatar.png") {
                 fs.unlink(`images/${oldFileName}`, () => {

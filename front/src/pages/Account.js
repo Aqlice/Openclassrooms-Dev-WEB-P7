@@ -24,7 +24,7 @@ const Account = () => {
 	let { id } = useParams();
 	const userId = JSON.parse(localStorage.userId)
 	const token = JSON.parse(localStorage.token)
-
+	console.log(userId, id)
 	const handleProfil = (e) => {
 		setProfilModal(true)
 	}
@@ -92,7 +92,7 @@ const Account = () => {
 			.then((res) => {
 				if (res.data.error)
 					console.log(res.data.error)
-				else if (admin === 1) 
+				else if (admin === 1)
 					navigate("/home")
 				else
 					navigate("/")
@@ -106,15 +106,16 @@ const Account = () => {
 
 	const getPostsFromUser = () => {
 		axios.get(`${process.env.REACT_APP_API_URL}api/posts/getposts/${id}`, {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        }).then((res) => {
-            if (res.data.error) 
-                console.log(res.data.errors)
-            else 
-                setPosts(res.data)
-	})}
+			headers: {
+				authorization: `Bearer ${token}`
+			}
+		}).then((res) => {
+			if (res.data.error)
+				console.log(res.data.errors)
+			else
+				setPosts(res.data)
+		})
+	}
 
 	return (
 		<div id="account">
@@ -130,7 +131,7 @@ const Account = () => {
 						<p>Contact : {mail}</p>
 						<li onClick={handleProfil} id="showProfil" className="active-btn">Modifier</li>
 						{profilModal && <ChangeProfil />}
-						{userId === id || admin == 1 ? (
+						{(userId == id && admin != 1) || (admin == 1 && userId != id)? (
 							<li onClick={deleteProfil} id="deleteProfil" className="active-btn">Supprimer</li>)
 							: ("")}
 					</div>
@@ -145,29 +146,29 @@ const Account = () => {
 					</div>
 				)}
 				<li onClick={getPostsFromUser} id="getPostsFromUser" className="active-btn">afficher les posts</li>
-				
+
 				<div className='post-container'>
-                    {posts.map(posts =>
-                    (
-                        <Posts
-                            key={posts.post_id}
-                            fname={posts.post_user_name}
-                            message={posts.message}
-                            postUserId={posts.post_user_id}
-                            postId={posts.post_id}
-                            date={posts.creation_time} 
-                            like={posts.total_like}
-                            pic={posts.post_pic}
+					{posts.map(posts =>
+					(
+						<Posts
+							key={posts.post_id}
+							fname={posts.post_user_name}
+							message={posts.message}
+							postUserId={posts.post_user_id}
+							postId={posts.post_id}
+							date={posts.creation_time}
+							like={posts.total_like}
+							pic={posts.post_pic}
 							userPic={posts.pic}
-                            admin={admin}
-							getAllPosts={getPostsFromUser}/>
-                    )
-                    )}
-                </div>
+							admin={admin}
+							getAllPosts={getPostsFromUser} />
+					)
+					)}
+				</div>
 
 			</div>
-			</div>
-		
+		</div>
+
 	)
 }
 

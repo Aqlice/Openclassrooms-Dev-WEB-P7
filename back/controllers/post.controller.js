@@ -1,5 +1,3 @@
-const dbc = require("../db")
-const db = dbc.getDB()
 const modelPost = require('../models/posts');
 
 exports.getAllPost = (req, res, next) => {

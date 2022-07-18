@@ -88,7 +88,6 @@ exports.getCommentsData = (req, res, next) => {
         else {
             return res.status(200).json(result)
         }
-        return res.status(200).json(result)
     })
 }
 

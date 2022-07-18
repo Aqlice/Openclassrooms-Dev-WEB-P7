@@ -65,28 +65,30 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
     }
 
     const createComment = (e) => {
-        axios({
-            method: "POST",
-            url: `${process.env.REACT_APP_API_URL}api/posts/comments `,
-            data: {
-                user_id: userId,
-                post_id: postId,
-                comment: newComment
-            },
-            headers: {
-                authorization: `Bearer ${token}`
-            },
-        }).then((res) => {
-            setNewComment(res.data.comment)
-            if (res.data.error) {
-                console.log("la", res.data.errors)
+        if (newComment) {
+            axios({
+                method: "POST",
+                url: `${process.env.REACT_APP_API_URL}api/posts/comments `,
+                data: {
+                    user_id: userId,
+                    post_id: postId,
+                    comment: newComment
+                },
+                headers: {
+                    authorization: `Bearer ${token}`
+                },
+            }).then((res) => {
+                setNewComment('')
+                if (res.data.error) {
+                    console.log("la", res.data.errors)
 
-            }
-            getComments()
-        })
-            .catch((err) => {
-                console.log(err);
-            });
+                }
+                getComments()
+            })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
     }
 
     const getUser = () => {
@@ -149,8 +151,8 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
                         <img src={heart} id="heart" />
                         <p id="like"> {like}</p>
                     </li>
-                    
-                    
+
+
                     <li onClick={getComments} id="getComments"><img src={commentIcon} id="icon-comment" /><p>Afficher</p></li>
                 </div>
                 <div className="comment-container" >
@@ -175,10 +177,10 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
                     </form>
                 </div>
                 {postUserId === userId || admin === 1 ? (
-                        <li onClick={handlePost} id="handlepost" className="name">Modifier ce post</li>)
-                        : ("")}
-                    
-                        {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}
+                    <li onClick={handlePost} id="handlepost" className="name">Modifier ce post</li>)
+                    : ("")}
+
+                {postModal && <ChangePost postId={postId} getAllPosts={getAllPosts} />}
 
                 {postUserId === userId || admin == 1 ? (
                     <li onClick={deletePost} id="delete-post" className="active-btn">supprimer</li>)
