@@ -1,31 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { useParams } from 'react-router-dom';
 
 
 
 function ChangePost({postId, getAllPosts}) {
 
-    const [message, setMessage] = useState("");
-    const [imagePost, setImagePost] = useState([]);
-    const [postModal, setPostModal] = useState(false)
+    const [message, setMessage] = useState("")
+    const [imagePost, setImagePost] = useState([])
+    const [postMessage, setPostMessage] = useState('')
 
     const token = JSON.parse(localStorage.token)
+
+    useEffect(() => {
+        getPostMessage()
+    }, [])
+
+    const getPostMessage  = async () => {
+        axios
+            .get(`${process.env.REACT_APP_API_URL}api/posts/modifypost/${postId} `, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
+            .then((res) => {
+                setPostMessage(res.data[0].message)
+            })
+    }
 
     const handlePost = (e) => {
         e.preventDefault()
         const form = new FormData()
         form.append('message', message)
         form.append('image', imagePost[0])
-        console.log(postId)
-        /*axios({
-            method: "PUT",
-            url: `${process.env.REACT_APP_API_URL}api/auth/${id} `,
-            data: form,
-            headers: {
-                authorization: `Bearer ${token}`,
-                "Content-Type": "multipart/form-data"
-            }*/
         axios
             .put(`${process.env.REACT_APP_API_URL}api/posts/modifypost/${postId} `, form, {
                 headers: {
@@ -35,28 +41,15 @@ function ChangePost({postId, getAllPosts}) {
             })
             .then((res) => {
                 getAllPosts()
-                //window.location = 'http://localhost:3000/home'
-                console.log(res)
             })
     }
-    //})
-    //        .then((res) => {
-    //console.log(res);
-
-    /*if (res.data.error) {
-        console.log("ici", res.data.errors)
-
-    }*/
-
-    //})
-    //};
 
     return (
         <div id="post-change-form">
         <form onSubmit={handlePost} id="post-form">
             <label htmlFor='message'>message</label>
             <br />
-            <textarea type="text" name='message' id='nessage' onChange={(e) => setMessage
+            <textarea type="text" defaultValue={postMessage} name='message' id='nessage' onChange={(e) => setMessage
                 (e.target.value)} value={message}></textarea>
             <br />
             <input type="file" name="post-picture" id='post-picture' onChange={(e) => setImagePost(e.target.files)} filename={imagePost}></input>

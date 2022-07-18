@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Poster from '../components/Poster';
 import Posts from '../components/Posts'
-import Comments from '../components/Comments'
-import UserSearch from "./UserSearch"
 
 const Home = () => {
 
+
+    if (localStorage.token == undefined)
+        window.location = ('/')
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
@@ -20,12 +21,8 @@ const Home = () => {
 
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
-
-    const [totalItems, setTotalItems] = useState(0)
-    const [pages, setPages] = useState(0)
     const [admin, setAdmin] = useState(0)
     const [search, setSearch] = useState('')
-    const [searchResult, setSearchResult] = useState([])
 
 
     const getAllPosts = async () => {
@@ -39,7 +36,6 @@ const Home = () => {
             }
         }).then((res) => {
             setPosts(res.data)
-            setTotalItems(res.data.length)
             if (res.data.error)
                 console.log(res.data.errors)
         })

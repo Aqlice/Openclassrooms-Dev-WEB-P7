@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from "react-router-dom";
 import axios from 'axios';
-import avatar from "../image/avatar.png"
 
 function Comments({ id, comment, comUserId, date, admin, fname, getComments }) {
     const token = JSON.parse(localStorage.token)
@@ -19,7 +17,7 @@ function Comments({ id, comment, comUserId, date, admin, fname, getComments }) {
         }).then((res) => {
             window.location = `/account/${comUserId}`
             if (res.data.error) {
-                console.log("ici", res.data.errors)
+                console.log(res.data.errors)
 
             }
         })

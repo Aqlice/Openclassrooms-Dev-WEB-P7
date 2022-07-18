@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Log from "../components/login/index.log";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import UserResult from '../components/UserResult'
 
 
@@ -23,7 +21,7 @@ const UserSearch = () => {
             }
         }).then((res) => {
             if (res.data.error) {
-                console.log("ici", res.data.errors)
+                console.log(res.data.errors)
 
             }
             else 

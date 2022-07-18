@@ -14,7 +14,6 @@ function ChangeProfil() {
     const [nameError, setNameError] = useState("")
     const [firstNameError, setFirstNameError] = useState("")
     const [imageProfileUpload, setImageProfileUpload] = useState([]);
-    const navigate = useNavigate()
     let { id } = useParams();
     const token = JSON.parse(localStorage.token)
 
@@ -40,7 +39,6 @@ function ChangeProfil() {
             })
             .then((res) => {
                 window.location.reload(false)
-                console.log(res)
             })
     }
 

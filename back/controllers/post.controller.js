@@ -49,3 +49,7 @@ exports.addLike = (req, res, next) => {
 exports.modifyPost = (req, res, next) => {
     return modelPost.modifyPostData(req, res, next)
 }
+
+exports.getPostMessage = (req, res, next) => {
+    return modelPost.getPostMessageData(req, res, next)
+}

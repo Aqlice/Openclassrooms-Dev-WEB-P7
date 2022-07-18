@@ -3,8 +3,8 @@ require('dotenv').config()
     const mysql = require('mysql2');
 
     const db = mysql.createConnection({
-        host     : "127.0.0.1",
-        user     :  "root",
+        host     : `${process.env.DB_HOST}`,
+        user     : `${process.env.USERTY}`,
         password : `${process.env.PASSWORD}`,  
         database: `${process.env.DATABASE}`
         

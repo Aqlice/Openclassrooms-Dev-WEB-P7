@@ -183,3 +183,13 @@ exports.modifyPostData = async (req, res, next) => {
             return res.status(400).json({ error: 'non autorisé' })
     })
 }
+
+exports.getPostMessageData = async (req, res, next) => {
+    const sql = `SELECT message FROM post WHERE post.id = ?`
+    db.query(sql, req.params.id, async (err, result) => {
+        if (err)
+            throw err
+        else
+            return res.status(200).json(result)
+    })
+}

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState, } from 'react';
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ChangeProfil from '../components/changeProfil';
-import avatar from "../image/avatar.png"
 import Posts from '../components/Posts'
 import { useNavigate } from 'react-router-dom';
 
@@ -24,7 +23,6 @@ const Account = () => {
 	let { id } = useParams();
 	const userId = JSON.parse(localStorage.userId)
 	const token = JSON.parse(localStorage.token)
-	console.log(userId, id)
 	const handleProfil = (e) => {
 		setProfilModal(true)
 	}
@@ -38,7 +36,6 @@ const Account = () => {
 				authorization: `Bearer ${token}`
 			}
 		}).then((res) => {
-			//console.log(res);
 			if (res.data.name)
 				setname(res.data.name);
 			if (res.data.fname)
@@ -50,7 +47,7 @@ const Account = () => {
 			getAdmin()
 
 			if (res.data.error) {
-				console.log("ici", res.data.errors)
+				console.log(res.data.errors)
 
 			}
 		})
@@ -71,7 +68,7 @@ const Account = () => {
 		}).then((res) => {
 			setAdmin(res.data.admin)
 			if (res.data.error) {
-				console.log("ici", res.data.errors)
+				console.log(res.data.errors)
 
 			}
 		})

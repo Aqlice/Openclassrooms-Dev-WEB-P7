@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from "react-router-dom";
 import axios from 'axios';
-import avatar from "../image/avatar.png"
 
 function Poster({ getAllPosts }) {
 
@@ -9,8 +7,6 @@ function Poster({ getAllPosts }) {
         getUser();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     });
-    const [name, setname] = useState('');
-    const [fname, setfname] = useState('');
     const [message, setMessage] = useState('')
     const [imageProfile, setImageProfile] = useState()
     const [postPic, setPostPic] = useState([])
@@ -29,13 +25,11 @@ function Poster({ getAllPosts }) {
                 authorization: `Bearer ${token}`
             }
         }).then((res) => {
-            setname(res.data.name);
-            setfname(res.data.fname);
             setImageProfile(res.data.pic)
 
 
             if (res.data.error) {
-                console.log("la", res.data.errors)
+                console.log(res.data.errors)
 
             }
         })
@@ -64,9 +58,8 @@ function Poster({ getAllPosts }) {
             .then((res) => {
                 setMessage(res.data.message)
                 getAllPosts()
-                //window.location.reload(false)
                 if (res.data.error) {
-                    console.log("la", res.data.errors)
+                    console.log(res.data.errors)
 
                 }
             })

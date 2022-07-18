@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from "react-router-dom"
 import axios from 'axios'
-import avatar from "../image/avatar.png"
 import Comments from "./Comments"
-import getAllPosts from "../pages/Home"
 import heart from "../image/icons/heart.svg"
 import commentIcon from "../image/icons/comment.svg"
 import ChangePost from '../components/changePost'
@@ -11,10 +8,8 @@ import ChangePost from '../components/changePost'
 function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, admin, getAllPosts }) {
     const token = JSON.parse(localStorage.token)
     const userId = JSON.parse(localStorage.userId)
-    const [posts, setPosts] = useState([])
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState('')
-    const [likes, setLikes] = useState(false)
     const [postModal, setPostModal] = useState(false)
 
     const handlePost = (e) => {
@@ -30,7 +25,6 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
             },
         })
             .then((res) => {
-                setPosts(res.data)
                 if (res.data.error)
                     console.log(res.data.error)
                 getAllPosts()
@@ -129,9 +123,6 @@ function Posts({ fname, message, postUserId, postId, date, pic, userPic, like, a
             .then(() =>
                 getAllPosts()
             )
-        console.log("ici4")
-
-        console.log("ici5")
     }
 
     return (
