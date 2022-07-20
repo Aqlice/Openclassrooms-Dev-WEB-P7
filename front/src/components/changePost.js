@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
-
-
-function ChangePost({postId, getAllPosts}) {
+function ChangePost({ postId, getAllPosts }) {
 
     const [message, setMessage] = useState("")
     const [imagePost, setImagePost] = useState([])
@@ -15,7 +13,7 @@ function ChangePost({postId, getAllPosts}) {
         getPostMessage()
     }, [])
 
-    const getPostMessage  = async () => {
+    const getPostMessage = async () => {
         axios
             .get(`${process.env.REACT_APP_API_URL}api/posts/modifypost/${postId} `, {
                 headers: {
@@ -46,16 +44,16 @@ function ChangePost({postId, getAllPosts}) {
 
     return (
         <div id="post-change-form">
-        <form onSubmit={handlePost} id="post-form">
-            <label htmlFor='message'>message</label>
-            <br />
-            <textarea type="text" defaultValue={postMessage} name='message' id='nessage' onChange={(e) => setMessage
-                (e.target.value)} value={message}></textarea>
-            <br />
-            <input type="file" name="post-picture" id='post-picture' onChange={(e) => setImagePost(e.target.files)} filename={imagePost}></input>
-            <br />
-            <input type="submit" classename="active-btn" id="change-post" value="modifier mon post"></input>
-        </form>
+            <form onSubmit={handlePost} id="post-form">
+                <label htmlFor='message'>message</label>
+                <br />
+                <textarea type="text" defaultValue={postMessage} name='message' id='nessage' onChange={(e) => setMessage
+                    (e.target.value)} value={message}></textarea>
+                <br />
+                <input type="file" name="post-picture" id='post-picture' onChange={(e) => setImagePost(e.target.files)} filename={imagePost}></input>
+                <br />
+                <input type="submit" classename="active-btn" id="change-post" value="modifier mon post"></input>
+            </form>
         </div>
     )
 }

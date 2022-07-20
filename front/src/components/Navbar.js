@@ -11,7 +11,7 @@ function Navbar() {
         <nav>
             <div className='nav-container'>
                 <div className='logo'>
-                    <NavLink  to="/home">
+                    <NavLink to="/home">
                         <div className='logo' id="nav-logo">
                             <img src={logo} alt='logo groupomania' />
                         </div>
@@ -19,11 +19,11 @@ function Navbar() {
                 </div>
 
                 {localStorage.token ? (
-                    <ul className = 'icon-link'>
+                    <ul className='icon-link'>
                         <li></li>
                         <li className='welcome'>
-                            <NavLink to={`/account/${ JSON.parse(localStorage.userId) }`}>
-                            <img src={userIcon}/>
+                            <NavLink to={`/account/${JSON.parse(localStorage.userId)}`}>
+                                <img src={userIcon} />
                             </NavLink>
                         </li>
                         <li onClick={Logout}>
@@ -37,7 +37,6 @@ function Navbar() {
                     ("")
                 )}
             </div>
-
         </nav >
     )
 }

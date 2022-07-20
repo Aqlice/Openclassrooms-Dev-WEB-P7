@@ -128,7 +128,7 @@ const Account = () => {
 						<p>Contact : {mail}</p>
 						<li onClick={handleProfil} id="showProfil" className="active-btn">Modifier</li>
 						{profilModal && <ChangeProfil />}
-						{(userId == id && admin != 1) || (admin == 1 && userId != id)? (
+						{(userId == id && admin != 1) || (admin == 1 && userId != id) ? (
 							<li onClick={deleteProfil} id="deleteProfil" className="name">Supprimer</li>)
 							: ("")}
 					</div>
@@ -162,10 +162,8 @@ const Account = () => {
 					)
 					)}
 				</div>
-
 			</div>
 		</div>
-
 	)
 }
 

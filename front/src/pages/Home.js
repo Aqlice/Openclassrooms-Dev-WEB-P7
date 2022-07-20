@@ -55,7 +55,7 @@ const Home = () => {
             }
         }).then((res) => {
             setAdmin(res.data.admin)
-            if (res.data.error) 
+            if (res.data.error)
                 console.log(res.data.errors)
         })
             .catch((err) => {

@@ -66,9 +66,7 @@ function Poster({ getAllPosts }) {
             .catch((err) => {
                 console.log(err);
             });
-
     }
-
 
     return (
         <section className='all-poster-container'>

@@ -6,8 +6,8 @@ const UserSearch = () => {
     const [result, setResult] = useState([])
     const [noResult, setNoResult] = useState(0)
     useEffect(() => {
-		userSearcher()
-	}, [])
+        userSearcher()
+    }, [])
     const userSearcher = async () => {
         const token = JSON.parse(localStorage.token)
         let id = document.URL.replace('http://localhost:3000/UserSearch/', '')
@@ -23,7 +23,7 @@ const UserSearch = () => {
                 console.log(res.data.errors)
 
             }
-            else 
+            else
                 setResult(res.data)
         })
             .catch((err) => {
@@ -33,26 +33,26 @@ const UserSearch = () => {
     }
     return (
         <>
-        {noResult == 0? (
-        <div className="result-list">
-            <div className="result-container">
-                <div>
-                {result.map(result =>
-                    (
-                        <UserResult
-                            key={result.UID}
-                            fname={result.fname}
-                            name={result.name}
-                            mail={result.mail}
-                            pic={result.pic}
-                            UID={result.UID}
-                            />
-                    )
-                    )}
-                </div>
-            </div>
-        </div>) 
-        : (<p>utilisateur non trouvé</p>)}
+            {noResult == 0 ? (
+                <div className="result-list">
+                    <div className="result-container">
+                        <div>
+                            {result.map(result =>
+                            (
+                                <UserResult
+                                    key={result.UID}
+                                    fname={result.fname}
+                                    name={result.name}
+                                    mail={result.mail}
+                                    pic={result.pic}
+                                    UID={result.UID}
+                                />
+                            )
+                            )}
+                        </div>
+                    </div>
+                </div>)
+                : (<p>utilisateur non trouvé</p>)}
         </>
     )
 }

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Comments({ id, comment, comUserId, date, admin, fname, getComments }) {
@@ -52,10 +51,10 @@ function Comments({ id, comment, comUserId, date, admin, fname, getComments }) {
             <li onClick={getUser} id="showProfil" className="name">posté par {fname}:</li>
             <p>{comment}</p>
             {
-        comUserId === userId || admin === 1 ? (
-            <li onClick={deleteCom} id="delete-com" className="">supprimer</li>)
-        : ("")
-    }
+                comUserId === userId || admin === 1 ? (
+                    <li onClick={deleteCom} id="delete-com" className="">supprimer</li>)
+                    : ("")
+            }
         </div >
     )
 }
