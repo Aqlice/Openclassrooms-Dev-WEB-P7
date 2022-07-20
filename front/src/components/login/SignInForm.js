@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from "axios";
-//import dotenv from "dotenv";
 
 function SignInForm() {
 
@@ -10,7 +9,6 @@ function SignInForm() {
     const handleLogin = (e) => {
 
         e.preventDefault();
-        //const emailError = document.getElementsByClassName(".email-error");
         const passwordError = document.querySelector(".password .error");
 
         axios({
@@ -24,8 +22,6 @@ function SignInForm() {
             .then((res) => {
                 console.log(res);
                 if (res.data.error) {
-                    //console.log("ici",res.data.errors)
-                    // emailError.innerHTML = "res.data";
                     passwordError.innerHTML = res.data.error;
                 } else {
                     localStorage.token = JSON.stringify(res.data.token);

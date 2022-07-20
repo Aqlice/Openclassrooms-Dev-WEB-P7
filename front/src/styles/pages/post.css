@@ -32,6 +32,10 @@
   max-height: 15rem;
 }
 
+.post-container p {
+  margin-top: 20px;
+}
+
 .post-container li {
   list-style: none;
   display: -webkit-box;

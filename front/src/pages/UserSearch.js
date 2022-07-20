@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserResult from '../components/UserResult'
 
-
 const UserSearch = () => {
     const [result, setResult] = useState([])
     const [noResult, setNoResult] = useState(0)
