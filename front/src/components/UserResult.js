@@ -13,7 +13,7 @@ function UserResult({ fname, name, mail, pic, UID }) {
             <div id='result-user-info'>
             <p> nom: {name}</p>
             <p> Prenom: {fname}</p>
-            <p>Contact: {mail}</p>
+            <p> Contact: {mail}</p>
             </div>
         </div>
     )
